@@ -1,0 +1,9 @@
+
+
+- El entry point desde nuestro punto de vista (api para facebook aprovechando el impulso de esa red social y las posibilidades y la extensibilidad que provee) sería el Usuario. El Usuario puede volverse un participante desde el momento que ingresa al bicho deportivo u organizador deportivo u blablablubleMatch. 
+
+- Como participante, tiene una puntuación inicialmente en 0 (por decir algun valor representativo) que se irá modificando segun los rates de otros jugadores mediante la abstracción que provea la entidad de Puntuacion. Como Participante, puede ingresar a distintos Equipos... tantos como quiera (en todo caso advertir si esta en 2 equipos que van a jugar partidos cuyos horarios se solapan). Cada Partido se forma con 2 equipos, y cada equipo puede participar en los partidos que quiera (nuevamente lo de advertir horarios solapados). 
+
+- Cada partido se juega en un establecimiento dado y pertenece a una Discilpina (nombre para nada intuitivo, lo cambiaria por "Deporte" o "TipoDeporte"). Los Establecimientos deben soportar la "Disciplina" del partido en cuestion obviamente... y pueden soportar 1 o mas. 
+
+- Por ultimo, todo Partido debe tener un unico organizador y el organizador obviamente puede organizar mas de un partido. El organizador por supuesto, es un participante y participa del partido que organiza.
