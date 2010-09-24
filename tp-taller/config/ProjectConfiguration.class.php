@@ -4,7 +4,7 @@
 // require_once '/home/demian/Programming/taller_desarrollo_workspace/symfony/lib/autoload/sfCoreAutoload.class.php';
 
 // Por Demian.
-require_once '../symfony/lib/autoload/sfCoreAutoload.class.php';
+require_once dirname(__FILE__).'/../../symfony/lib/autoload/sfCoreAutoload.class.php';
 sfCoreAutoload::register();
 
 class ProjectConfiguration extends sfProjectConfiguration
