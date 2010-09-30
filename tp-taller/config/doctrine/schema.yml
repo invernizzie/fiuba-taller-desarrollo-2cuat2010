@@ -1,0 +1,120 @@
+Match:
+  tableName:  match_table
+  actAs:  { Timestampable: ~ }
+  columns:
+    starting_time:  { type: timestamp }
+    played:         { type: boolean, notnull: true, default: 0 }
+    discipline_id:  { type: integer(5), notnull: true }
+    owner_id:       { type: integer(5) }
+    rental_id:      { type: integer(5) }
+    local_id:      { type: integer(5) }
+    away_id:      { type: integer(5) }
+  relations:
+    Discipline:
+      foreignAlias: Matches
+      local:        discipline_id
+      foreign:      id
+      type:         one
+      foreignType:  many
+    Owner:
+      class:        sfGuardUser
+      foreignAlias: OwnedMatches
+      local:        owner_id
+      foreign:      id
+      type:         one
+      foreignType:  many
+    Court:
+      class:        PlayingFieldRental
+      foreignAlias: HeldMatches
+      local:        rental_id
+      foreign:      id
+      type:         one
+      foreignType:  many
+    LocalTeam:
+      class:        Team
+      foreignAlias: HeldMatches
+      local:        local_id
+      foreign:      id
+      type:         one
+      foreignType:  many
+    AwayTeam:
+      class:        Team
+      foreignAlias: HeldMatches
+      local:        away_id
+      foreign:      id
+      type:         one
+      foreignType:  many
+
+Team:
+  actAs:  { Timestampable: ~ }
+  columns:
+    name:           { type: string(255) }
+    discipline_id:  { type: integer(5), notnull: true }
+  relations:
+    Players:
+      class:        sfGuardUser
+      foreignAlias: Teams
+      refClass:     TeamPlayer
+      local:        team_id
+      foreign:      player_id
+    Discipline:
+      foreignAlias: Teams
+      local:        discipline_id
+      foreign:      id
+      type:         one
+      foreignType:  many
+
+TeamPlayer:
+  actAs:  { Timestampable: ~ }
+  columns:
+    team_id:   { type: integer(5), notnull: true, primary: true }
+    player_id:  { type: integer(5), notnull: true, primary: true }
+  relations:
+    Team:
+      local:        team_id
+      foreign:      id
+      foreignAlias: TeamPlayers
+    Player:
+      class:        sfGuardUser
+      local:        player_id
+      foreign:      id
+      foreignAlias: TeamPlayers
+
+Discipline:
+  actAs:  { Timestampable: ~ }
+  columns:
+    name:     { type: string(255), notnull: true }
+  relations:
+    Rentals:
+      class:        PlayingFieldRental
+      foreignAlias: Disciplines
+      refClass:     RentalDiscipline
+      local:        discipline_id
+      foreign:      rental_id
+
+PlayingFieldRental:
+  actAs:  { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true }
+  relations:
+    Disciplines:
+      class:        Discipline
+      foreignAlias: Rentals
+      refClass:     RentalDiscipline
+      local:        rental_id
+      foreign:      discipline_id
+
+RentalDiscipline:
+  actAs:  { Timestampable: ~ }
+  columns:
+    rental_id:      { type: integer(5), notnull: true, primary: true }
+    discipline_id:  { type: integer(5), notnull: true, primary: true }
+  relations:
+    PlayingFieldRental:
+      local:        rental_id
+      foreign:      id
+      foreignAlias: RentalDisciplines
+    Discipline:
+      local:        discipline_id
+      foreign:      id
+      foreignAlias: RentalDisciplines
