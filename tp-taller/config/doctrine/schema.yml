@@ -3,12 +3,14 @@ Match:
   actAs:  { Timestampable: ~ }
   columns:
     starting_time:  { type: timestamp }
+    closed:			{ type: boolean, notnull: true, default: 0 }
     played:         { type: boolean, notnull: true, default: 0 }
+    public:			{ type: boolean, notnull: true, default: 1 }
     discipline_id:  { type: integer(5), notnull: true }
     owner_id:       { type: integer(5) }
     rental_id:      { type: integer(5) }
-    local_id:      { type: integer(5) }
-    away_id:      { type: integer(5) }
+    local_id:       { type: integer(5) }
+    away_id:        { type: integer(5) }
   relations:
     Discipline:
       foreignAlias: Matches
@@ -83,7 +85,7 @@ TeamPlayer:
 Discipline:
   actAs:  { Timestampable: ~ }
   columns:
-    name:     { type: string(255), notnull: true }
+    name: { type: string(255), notnull: true }
   relations:
     Rentals:
       class:        PlayingFieldRental
@@ -95,7 +97,12 @@ Discipline:
 PlayingFieldRental:
   actAs:  { Timestampable: ~ }
   columns:
-    name: { type: string(255), notnull: true }
+    name:       { type: string(255), notnull: true }
+    address:    { type: string(255) }
+    city:       { type: string(255) }
+    province:   { type: string(255) }
+    country:    { type: string(255) }
+    phoneNo:	{ type: string(40) }
   relations:
     Disciplines:
       class:        Discipline
