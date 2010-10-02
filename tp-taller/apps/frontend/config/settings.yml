@@ -34,12 +34,10 @@ all:
     # Enable the database manager
     use_database:           true
 
-    enabled_modules:        [default, sfFacebookConnectAuth]
-#    Estos son parametros de sfDoctrineGuardPlugin, creo que son necesarios
-#    pero los dejo por si algo no funciona, es un lugar donde mirar
-#
-#    enabled_modules:		[default, sfGuardAuth]
-#    login_module:           sfGuardAuth
-#    login_action:           signin
-#    secure_module:          sfGuardAuth
-#    secure_action:          secure
+    enabled_modules:        [default, sfFacebookConnectAuth, sfGuardAuth]
+
+    login_module:           sfGuardAuth
+    login_action:           signin
+    
+    secure_module:          sfGuardAuth
+    secure_action:          secure
