@@ -5,6 +5,8 @@
     <?php include_http_metas() ?>
     <?php include_metas() ?>
     <?php include_title() ?>
+    <?php include_stylesheets() ?>
+    <?php include_javascripts() ?>
     <script type="text/javascript" src="/sfFacebookConnectPlugin/js/animation/animation.js"></script>
   </head>
   <body>
