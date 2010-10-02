@@ -36,6 +36,7 @@ all:
 
     enabled_modules:        [default, sfFacebookConnectAuth, sfGuardAuth]
 
+  .actions:
     login_module:           sfGuardAuth
     login_action:           signin
     

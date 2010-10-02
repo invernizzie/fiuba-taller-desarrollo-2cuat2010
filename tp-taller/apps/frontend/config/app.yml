@@ -10,7 +10,7 @@ all:
     callback_url:               http://tptallerdesarrollo.servehttp.com/frontend_dev.php/
     redirect_after_connect:     false
     redirect_after_connect_url: ''
-    connect_signin_url:         'sfFacebookConnectAuth/signin'
+    connect_signin_url:         'index.php/sfFacebookConnectAuth/signin'
     app_url:                    '/tptallerprueba'
     guard_adapter:              ~
     js_framework:               none
