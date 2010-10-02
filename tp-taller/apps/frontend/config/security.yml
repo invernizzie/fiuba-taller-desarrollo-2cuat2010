@@ -3,3 +3,9 @@
 
 default:
   is_secure: false
+
+ajaxSignin:
+  is_secure: false
+
+signin:
+  is_secure: false
