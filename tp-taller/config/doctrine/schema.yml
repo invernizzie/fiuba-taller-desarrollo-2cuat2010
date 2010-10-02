@@ -19,7 +19,7 @@ Match:
       type:         one
       foreignType:  many
     Owner:
-      class:        sfGuardUser
+      class:        sfGuardUserProfile
       foreignAlias: OwnedMatches
       local:        owner_id
       foreign:      id
@@ -54,7 +54,7 @@ Team:
     discipline_id:  { type: integer(5), notnull: true }
   relations:
     Players:
-      class:        sfGuardUser
+      class:        sfGuardUserProfile
       foreignAlias: Teams
       refClass:     TeamPlayer
       local:        team_id
@@ -77,7 +77,7 @@ TeamPlayer:
       foreign:      id
       foreignAlias: TeamPlayers
     Player:
-      class:        sfGuardUser
+      class:        sfGuardUserProfile
       local:        player_id
       foreign:      id
       foreignAlias: TeamPlayers
@@ -125,3 +125,32 @@ RentalDiscipline:
       local:        discipline_id
       foreign:      id
       foreignAlias: RentalDisciplines
+
+sfGuardUserProfile:
+  tableName:          sf_guard_user_profile
+  columns:
+    user_id:          { type: integer(5), notnull: true }
+    first_name:       { type: string(30) }
+    last_name:        { type: string(30) }
+    facebook_uid:     { type: string(20) }
+    email:            { type: string(255) }
+    # email_hash:       { type: string(255) }
+  indexes:
+    facebook_uid_index:
+      fields: [facebook_uid]
+      unique: true
+    email_index:
+      fields: [email]
+      unique: true
+    # email_hash_index:
+      # fields: [email_hash]
+      # unique: true
+  relations:
+    sfGuardUser:
+      type:         one
+      foreignType:  one
+      class:        sfGuardUser
+      local:        user_id
+      foreign:      id
+      onDelete:     cascade
+      foreignAlias: Profile
