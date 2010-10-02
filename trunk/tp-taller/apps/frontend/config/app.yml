@@ -7,8 +7,9 @@ all:
     api_key:                    18e989075e100001218c6b50e9a343b9
     api_secret:                 b7190620f337ce312b5f8f9ef692b1f7
     api_id:                     141844382523320
-    # redirect_after_connect:     false
-    # redirect_after_connect_url: ''
+    callback_url:               http://tptallerdesarrollo.servehttp.com/frontend_dev.php/
+    redirect_after_connect:     false
+    redirect_after_connect_url: ''
     connect_signin_url:         'sfFacebookConnectAuth/signin'
     app_url:                    '/tptallerprueba'
     guard_adapter:              ~
@@ -19,7 +20,7 @@ all:
     profile_field_name:         user_id
     profile_facebook_uid_name:  facebook_uid
     profile_email_name:         email
-    # profile_email_hash_name:    email_hash
+    profile_email_hash_name:    email_hash
 
   facebook_connect:
     load_routing:      true

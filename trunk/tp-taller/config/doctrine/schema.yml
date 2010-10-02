@@ -130,11 +130,13 @@ sfGuardUserProfile:
   tableName:          sf_guard_user_profile
   columns:
     user_id:          { type: integer(5), notnull: true }
+    nickname:         { type: varchar(32) }
     first_name:       { type: string(30) }
     last_name:        { type: string(30) }
+    birthday:         { type: date }
     facebook_uid:     { type: string(20) }
     email:            { type: string(255) }
-    # email_hash:       { type: string(255) }
+    email_hash:       { type: string(255) }
   indexes:
     facebook_uid_index:
       fields: [facebook_uid]
