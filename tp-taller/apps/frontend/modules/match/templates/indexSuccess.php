@@ -1,3 +1,20 @@
+<?php if ($sf_user->isFacebookConnected()): ?>
+
+<fb:serverfbml style="width: 740px;">
+	<script type="text/fbml">
+        <fb:fbml>
+        	<fb:request-form target="_top" action="[where to redirect after invite]" method="post" type="[name of your app]" content="[text the user will receive]&lt;fb:req-choice url=&quot;http://apps.facebook.com/[your app]/&quot; label=&quot;Accept!&quot;  " image="" invite="true">
+        		<fb:multi-friend-selector cols="4" actiontext="[some text above the invite form]" />
+	        </fb:request-form>
+        </fb:fbml>
+    </script>
+</fb:serverfbml>
+
+<?php else: ?>
+<p>Ooops?</p>
+<br />
+<?php endif; ?>
+
 <h1>Matchs List</h1>
 
 <table>

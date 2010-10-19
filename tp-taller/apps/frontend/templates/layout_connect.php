@@ -1,7 +1,7 @@
-<?php use_helper('sfFacebookConnect') ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:fb="http://www.facebook.com/2008/fbml">
   <head>
+    <?php use_helper('sfFacebookConnect') ?>
     <?php include_http_metas() ?>
     <?php include_metas() ?>
     <?php include_title() ?>
@@ -11,11 +11,11 @@
   </head>
   <body>
     
-    <?php $sfGuardUser = sfFacebook::getSfGuardUserByFacebookSession(); ?>
+    <?php /*$sfGuardUser = sfFacebook::getSfGuardUserByFacebookSession(); ?>
     Hello <fb:name uid="<?php echo $sfGuardUser ? $sfGuardUser->getProfile()->getFacebookUid() : '' ?>"></fb:name>
 
     <?php echo $sf_content ?>
-    <?php echo include_facebook_connect_script() ?>
-    <?php //include_bottom_facebook_connect_script(); ?>
+    <?php //echo include_facebook_connect_script() ?>
+    <?php include_bottom_facebook_connect_script();*/ ?>
   </body>
 </html>

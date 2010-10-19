@@ -15,6 +15,15 @@ class matchActions extends sfActions
     $this->matchs = Doctrine_Core::getTable('Match')
       ->createQuery('a')
       ->execute();
+
+    sfFacebook::requireLogin();
+    //get the user object
+    $user = $this->getUser();
+
+    // facebook user id
+    $this->fb_uid = $user->getCurrentFacebookUid();
+    // get or create user based on fb_uid
+    $fb_user = sfFacebook::getOrCreateUserByFacebookUid($this->fb_uid);
   }
 
   public function executeShow(sfWebRequest $request)
