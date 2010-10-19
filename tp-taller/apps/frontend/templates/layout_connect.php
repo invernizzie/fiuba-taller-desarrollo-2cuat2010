@@ -15,6 +15,7 @@
     Hello <fb:name uid="<?php echo $sfGuardUser ? $sfGuardUser->getProfile()->getFacebookUid() : '' ?>"></fb:name>
 
     <?php echo $sf_content ?>
-    <?php include_bottom_facebook_connect_script(); ?>
+    <?php echo include_facebook_connect_script() ?>
+    <?php //include_bottom_facebook_connect_script(); ?>
   </body>
 </html>

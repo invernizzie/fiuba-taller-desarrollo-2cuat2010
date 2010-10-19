@@ -7,13 +7,13 @@ all:
     api_key:                    18e989075e100001218c6b50e9a343b9
     api_secret:                 b7190620f337ce312b5f8f9ef692b1f7
     api_id:                     141844382523320
-    callback_url:               http://tptallerdesarrollo.servehttp.com/frontend_dev.php/
+    callback_url:               http://tptallerdesarrollo.servehttp.com/
     redirect_after_connect:     false
-    redirect_after_connect_url: ''
-    connect_signin_url:         'index.php/sfFacebookConnectAuth/signin'
+    redirect_after_connect_url: 'http://tptallerdesarrollo.servehttp.com/frontend_dev.php/match'
+    connect_signin_url:         'http://tptallerdesarrollo.servehttp.com/frontend_dev.php/sfFacebookConnectAuth/signin'
     app_url:                    '/tptallerprueba'
-    guard_adapter:              ~
-    js_framework:               none
+    # guard_adapter:              ~
+    # js_framework:               none
 
   sf_guard_plugin:
     profile_class:              sfGuardUserProfile
