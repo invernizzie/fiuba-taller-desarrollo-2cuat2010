@@ -144,9 +144,9 @@ sfGuardUserProfile:
     email_index:
       fields: [email]
       unique: true
-    # email_hash_index:
-      # fields: [email_hash]
-      # unique: true
+    email_hash_index:
+      fields: [email_hash]
+      unique: true
   relations:
     sfGuardUser:
       type:         one

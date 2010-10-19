@@ -34,7 +34,7 @@ all:
     # Enable the database manager
     use_database:           true
 
-    enabled_modules:        [default, sfFacebookConnectAuth, sfGuardAuth]
+    enabled_modules:        [default, sfFacebookConnectAuth, sfFacebookConnectDemo, sfGuardAuth]
 
   .actions:
     login_module:           sfGuardAuth
