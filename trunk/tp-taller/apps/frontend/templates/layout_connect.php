@@ -77,7 +77,6 @@
     <?php $sfGuardUser = sfFacebook::getSfGuardUserByFacebookSession(); ?>
     Hello <fb:name uid="<?php echo $sfGuardUser ? $sfGuardUser->getProfile()->getFacebookUid() : '' ?>"></fb:name>
 
-    <?php echo $sf_content ?>
     <?php //echo include_facebook_connect_script() ?>
     <?php include_bottom_facebook_connect_script(); ?>
   </body>
