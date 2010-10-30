@@ -15,7 +15,7 @@
 <br />
 <?php endif; ?>
 
-<h1>Matchs List</h1>
+<h1>Matches List</h1>
 
 <table>
   <thead>
