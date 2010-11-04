@@ -57,20 +57,6 @@
         </div>
 
         <div id="footer">
-            <div class="content">
-                <span class="symfony">
-                    <img src="http://www.jobeet.org/images/jobeet-mini.png">
-                    powered by <a href="http://www.symfony-project.org/">
-                    <img src="http://www.jobeet.org/images/symfony.gif" alt="symfony framework">
-                    </a>
-                </span>
-                <ul>
-                    <li><a href="">About Teambook</a></li>
-                    <li class="feed"><a href="">Full feed</a></li>
-                    <li><a href ="">Teambook API</a></li>
-                    <li class="last"><a href="">Affiliates</a></li>
-                </ul>
-            </div>
         </div>
     </div>
 
