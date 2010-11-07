@@ -12,5 +12,7 @@ class MatchForm extends BaseMatchForm
 {
   public function configure()
   {
+      unset($this['created_at'], $this['updated_at'], $this['owner_id'],
+            $this['played'], $this['closed'], $this['local_id'], $this['away_id']);
   }
 }

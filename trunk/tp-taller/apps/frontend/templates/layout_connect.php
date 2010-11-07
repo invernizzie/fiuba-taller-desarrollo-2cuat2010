@@ -20,7 +20,7 @@
                     <div class="post">
                         <h2>Start playing now</h2>
                         <div>
-                            <a href="<?php echo url_for('job/index') ?>">Post a new match</a>
+                            <a href="<?php echo url_for('match/new') ?>">Post a new match</a>
                         </div>
                     </div>
 

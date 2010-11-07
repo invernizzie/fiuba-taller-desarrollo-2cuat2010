@@ -24,3 +24,31 @@ sfGuardPermission:
   Permission_admin:
     name:           admin
     description:    Administrator permission
+
+Discipline:
+  Futbol:
+    name: futbol
+
+  Tennis:
+    name: tennis
+
+  Basket:
+    name: basket
+
+PlayingField:
+  Informal1:
+    name: FIUBA
+    address: Av. Paseo Colón 850
+    city: Capital Federal
+    province: Buenos Aires
+    country: Argentina
+    phoneNo: 43430893
+
+PlayingFieldRental:
+  Ocampo:
+    name: Ocampo
+    address: Ortiz de Ocampo 1111
+    city: Capital Federal
+    province: Buenos Aires
+    country: Argentina
+    phoneNo: 44444444

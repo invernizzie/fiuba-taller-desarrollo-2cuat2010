@@ -1,0 +1,48 @@
+
+.matches
+{
+ width: 760px;
+ margin: 0 auto;
+}
+
+.matches tr.even
+{
+  background-color: #f3fafc;
+}
+
+.matches tr.odd
+{
+
+}
+
+.matches tr:hover
+{
+  background-color: #fff;
+}
+
+.matches th
+{
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px dotted #999;
+  background: -webkit-gradient(
+   linear,
+   left bottom,
+   left top,
+   color-stop(0, rgb(216,234,241)),
+   color-stop(1, rgb(74,182,215))
+  );
+  background: -moz-linear-gradient(
+   center bottom,
+   rgb(216,234,241) 0%,
+   rgb(74,182,215) 100%
+  );
+}
+
+.matches td
+{
+  padding: 12px 15px;
+  border: 1px dotted #999;
+  text-align: center;
+}
+

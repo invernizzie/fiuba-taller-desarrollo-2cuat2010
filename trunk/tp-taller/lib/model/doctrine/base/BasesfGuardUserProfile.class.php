@@ -101,6 +101,13 @@ abstract class BasesfGuardUserProfile extends sfDoctrineRecord
              ),
              'unique' => true,
              ));
+        $this->index('email_hash_index', array(
+             'fields' => 
+             array(
+              0 => 'email_hash',
+             ),
+             'unique' => true,
+             ));
     }
 
     public function setUp()

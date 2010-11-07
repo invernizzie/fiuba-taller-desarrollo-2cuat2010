@@ -8,45 +8,18 @@
  * @package    tp-taller
  * @subpackage form
  * @author     Your name here
- * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
+ * @version    SVN: $Id: sfDoctrineFormGeneratedInheritanceTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
-abstract class BasePlayingFieldRentalForm extends BaseFormDoctrine
+abstract class BasePlayingFieldRentalForm extends PlayingFieldForm
 {
-  public function setup()
+  protected function setupInheritance()
   {
-    $this->setWidgets(array(
-      'id'               => new sfWidgetFormInputHidden(),
-      'name'             => new sfWidgetFormInputText(),
-      'address'          => new sfWidgetFormInputText(),
-      'city'             => new sfWidgetFormInputText(),
-      'province'         => new sfWidgetFormInputText(),
-      'country'          => new sfWidgetFormInputText(),
-      'phoneNo'          => new sfWidgetFormInputText(),
-      'created_at'       => new sfWidgetFormDateTime(),
-      'updated_at'       => new sfWidgetFormDateTime(),
-      'disciplines_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Discipline')),
-    ));
+    parent::setupInheritance();
 
-    $this->setValidators(array(
-      'id'               => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'name'             => new sfValidatorString(array('max_length' => 255)),
-      'address'          => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'city'             => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'province'         => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'country'          => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'phoneNo'          => new sfValidatorString(array('max_length' => 40, 'required' => false)),
-      'created_at'       => new sfValidatorDateTime(),
-      'updated_at'       => new sfValidatorDateTime(),
-      'disciplines_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Discipline', 'required' => false)),
-    ));
+    $this->widgetSchema   ['disciplines_list'] = new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Discipline'));
+    $this->validatorSchema['disciplines_list'] = new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Discipline', 'required' => false));
 
     $this->widgetSchema->setNameFormat('playing_field_rental[%s]');
-
-    $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
-
-    $this->setupInheritance();
-
-    parent::setup();
   }
 
   public function getModelName()
