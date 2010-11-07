@@ -2,15 +2,15 @@ Match:
   tableName:  match_table
   actAs:  { Timestampable: ~ }
   columns:
-    starting_time:  { type: timestamp }
-    closed:			{ type: boolean, notnull: true, default: 0 }
-    played:         { type: boolean, notnull: true, default: 0 }
-    public:			{ type: boolean, notnull: true, default: 1 }
-    discipline_id:  { type: integer(5), notnull: true }
-    owner_id:       { type: integer(5) }
-    rental_id:      { type: integer(5) }
-    local_id:       { type: integer(5) }
-    away_id:        { type: integer(5) }
+    starting_time:    { type: timestamp }
+    closed:			  { type: boolean, notnull: true, default: 0 }
+    played:           { type: boolean, notnull: true, default: 0 }
+    public:			  { type: boolean, notnull: true, default: 1 }
+    discipline_id:    { type: integer(5), notnull: true }
+    owner_id:         { type: integer(5) }
+    playing_field_id: { type: integer(5) }
+    local_id:         { type: integer(5) }
+    away_id:          { type: integer(5) }
   relations:
     Discipline:
       foreignAlias: Matches
@@ -26,9 +26,9 @@ Match:
       type:         one
       foreignType:  many
     Court:
-      class:        PlayingFieldRental
+      class:        PlayingField
       foreignAlias: HeldMatches
-      local:        rental_id
+      local:        playing_field_id
       foreign:      id
       type:         one
       foreignType:  many
@@ -94,7 +94,7 @@ Discipline:
       local:        discipline_id
       foreign:      rental_id
 
-PlayingFieldRental:
+PlayingField:
   actAs:  { Timestampable: ~ }
   columns:
     name:       { type: string(255), notnull: true }
@@ -103,6 +103,11 @@ PlayingFieldRental:
     province:   { type: string(255) }
     country:    { type: string(255) }
     phoneNo:	{ type: string(40) }
+
+PlayingFieldRental:
+  inheritance:
+    extends: PlayingField
+    type: column_aggregation
   relations:
     Disciplines:
       class:        Discipline

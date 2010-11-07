@@ -32,10 +32,16 @@
   background-color: #fff;
 }
 
+.jobs th
+{
+  text-align: center;
+}
+
 .jobs td
 {
   padding: 12px 15px;
   border-bottom: 1px dotted #999;
+  border-right: 1px dotted #999;
 }
 
 .jobs td.position,

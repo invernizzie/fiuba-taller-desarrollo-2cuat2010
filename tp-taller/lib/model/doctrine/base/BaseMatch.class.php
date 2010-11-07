@@ -11,43 +11,43 @@
  * @property boolean $public
  * @property integer $discipline_id
  * @property integer $owner_id
- * @property integer $rental_id
+ * @property integer $playing_field_id
  * @property integer $local_id
  * @property integer $away_id
  * @property Discipline $Discipline
  * @property sfGuardUserProfile $Owner
- * @property PlayingFieldRental $Court
+ * @property PlayingField $Court
  * @property Team $LocalTeam
  * @property Team $AwayTeam
  * 
- * @method timestamp          getStartingTime()  Returns the current record's "starting_time" value
- * @method boolean            getClosed()        Returns the current record's "closed" value
- * @method boolean            getPlayed()        Returns the current record's "played" value
- * @method boolean            getPublic()        Returns the current record's "public" value
- * @method integer            getDisciplineId()  Returns the current record's "discipline_id" value
- * @method integer            getOwnerId()       Returns the current record's "owner_id" value
- * @method integer            getRentalId()      Returns the current record's "rental_id" value
- * @method integer            getLocalId()       Returns the current record's "local_id" value
- * @method integer            getAwayId()        Returns the current record's "away_id" value
- * @method Discipline         getDiscipline()    Returns the current record's "Discipline" value
- * @method sfGuardUserProfile getOwner()         Returns the current record's "Owner" value
- * @method PlayingFieldRental getCourt()         Returns the current record's "Court" value
- * @method Team               getLocalTeam()     Returns the current record's "LocalTeam" value
- * @method Team               getAwayTeam()      Returns the current record's "AwayTeam" value
- * @method Match              setStartingTime()  Sets the current record's "starting_time" value
- * @method Match              setClosed()        Sets the current record's "closed" value
- * @method Match              setPlayed()        Sets the current record's "played" value
- * @method Match              setPublic()        Sets the current record's "public" value
- * @method Match              setDisciplineId()  Sets the current record's "discipline_id" value
- * @method Match              setOwnerId()       Sets the current record's "owner_id" value
- * @method Match              setRentalId()      Sets the current record's "rental_id" value
- * @method Match              setLocalId()       Sets the current record's "local_id" value
- * @method Match              setAwayId()        Sets the current record's "away_id" value
- * @method Match              setDiscipline()    Sets the current record's "Discipline" value
- * @method Match              setOwner()         Sets the current record's "Owner" value
- * @method Match              setCourt()         Sets the current record's "Court" value
- * @method Match              setLocalTeam()     Sets the current record's "LocalTeam" value
- * @method Match              setAwayTeam()      Sets the current record's "AwayTeam" value
+ * @method timestamp          getStartingTime()     Returns the current record's "starting_time" value
+ * @method boolean            getClosed()           Returns the current record's "closed" value
+ * @method boolean            getPlayed()           Returns the current record's "played" value
+ * @method boolean            getPublic()           Returns the current record's "public" value
+ * @method integer            getDisciplineId()     Returns the current record's "discipline_id" value
+ * @method integer            getOwnerId()          Returns the current record's "owner_id" value
+ * @method integer            getPlayingFieldId()   Returns the current record's "playing_field_id" value
+ * @method integer            getLocalId()          Returns the current record's "local_id" value
+ * @method integer            getAwayId()           Returns the current record's "away_id" value
+ * @method Discipline         getDiscipline()       Returns the current record's "Discipline" value
+ * @method sfGuardUserProfile getOwner()            Returns the current record's "Owner" value
+ * @method PlayingField       getCourt()            Returns the current record's "Court" value
+ * @method Team               getLocalTeam()        Returns the current record's "LocalTeam" value
+ * @method Team               getAwayTeam()         Returns the current record's "AwayTeam" value
+ * @method Match              setStartingTime()     Sets the current record's "starting_time" value
+ * @method Match              setClosed()           Sets the current record's "closed" value
+ * @method Match              setPlayed()           Sets the current record's "played" value
+ * @method Match              setPublic()           Sets the current record's "public" value
+ * @method Match              setDisciplineId()     Sets the current record's "discipline_id" value
+ * @method Match              setOwnerId()          Sets the current record's "owner_id" value
+ * @method Match              setPlayingFieldId()   Sets the current record's "playing_field_id" value
+ * @method Match              setLocalId()          Sets the current record's "local_id" value
+ * @method Match              setAwayId()           Sets the current record's "away_id" value
+ * @method Match              setDiscipline()       Sets the current record's "Discipline" value
+ * @method Match              setOwner()            Sets the current record's "Owner" value
+ * @method Match              setCourt()            Sets the current record's "Court" value
+ * @method Match              setLocalTeam()        Sets the current record's "LocalTeam" value
+ * @method Match              setAwayTeam()         Sets the current record's "AwayTeam" value
  * 
  * @package    tp-taller
  * @subpackage model
@@ -86,7 +86,7 @@ abstract class BaseMatch extends sfDoctrineRecord
              'type' => 'integer',
              'length' => 5,
              ));
-        $this->hasColumn('rental_id', 'integer', 5, array(
+        $this->hasColumn('playing_field_id', 'integer', 5, array(
              'type' => 'integer',
              'length' => 5,
              ));
@@ -111,8 +111,8 @@ abstract class BaseMatch extends sfDoctrineRecord
              'local' => 'owner_id',
              'foreign' => 'id'));
 
-        $this->hasOne('PlayingFieldRental as Court', array(
-             'local' => 'rental_id',
+        $this->hasOne('PlayingField as Court', array(
+             'local' => 'playing_field_id',
              'foreign' => 'id'));
 
         $this->hasOne('Team as LocalTeam', array(
