@@ -1,6 +1,6 @@
-package teambook
+package com.teambook.model
 
-import grails.test.*
+import grails.test.GrailsUnitTestCase
 
 class MatchTests extends GrailsUnitTestCase {
     protected void setUp() {

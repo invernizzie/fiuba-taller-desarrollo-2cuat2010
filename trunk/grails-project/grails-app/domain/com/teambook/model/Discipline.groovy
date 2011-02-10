@@ -7,6 +7,10 @@ class Discipline {
     // How many players a team of this discipline must have
     int playersPerTeam
 
+    String toString() {
+        name
+    }
+
     static constraints = {
         name(blank: false)
         playersPerTeam(min: 1)

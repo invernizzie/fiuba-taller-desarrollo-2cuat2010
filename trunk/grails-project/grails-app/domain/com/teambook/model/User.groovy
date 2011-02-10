@@ -10,6 +10,10 @@ class User {
     Date birthday
     String email
 
+    String toString() {
+        "$firstName $lastName"
+    }
+
     static constraints = {
         username(blank: false)
         firstName(blank: false)

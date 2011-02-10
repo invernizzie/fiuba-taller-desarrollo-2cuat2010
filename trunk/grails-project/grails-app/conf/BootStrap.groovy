@@ -60,8 +60,18 @@ class BootStrap {
                     localTeam: teams[0],
                     awayTeam: teams[1],
                     field: tennisField,
-                    discipline: teams[0].discipline
-            ).save(failOnError: true)
+                    discipline: teams[0].discipline ).save(failOnError: true)
+            new Match(
+                    startingTime: maniana.time,
+                    endingTime: manianaYUnaHora.time,
+                    publicMatch: true,
+                    owner: users[0],
+                    localTeam: teams[1],
+                    awayTeam: teams[0],
+                    field: tennisField,
+                    discipline: teams[0].discipline ).save(failOnError: true)
+
+
         }
     }
     def destroy = {
