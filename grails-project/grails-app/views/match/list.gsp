@@ -10,7 +10,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
-            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
+            <span class="menuButton"><g:link class="create" action="create"><g:message code="match.organize.label" /></g:link></span>
         </div>
         <div class="body">
             <h1><g:message code="match.list.public.label" args="[entityName]" /></h1>
@@ -24,17 +24,17 @@
 
                             <th><g:message code="match.name.label" /></th>
 
-                            <th><g:message code="match.discipline.label" default="Discipline" /></th>
+                            <g:sortableColumn property="discipline.name" title="${message(code: 'match.discipline.label', default: 'Discipline')}" />
 
                             <g:sortableColumn property="startingTime" title="${message(code: 'match.startingTime.label', default: 'Starting Time')}" />
 
                             <g:sortableColumn property="endingTime" title="${message(code: 'match.endingTime.label', default: 'Ending Time')}" />
 
-                            <th><g:message code="match.localTeam.label" default="Local Team" /></th>                            
+                            <g:sortableColumn property="field.name" title="${message(code: 'match.field.label', default: 'Field')}" />
 
-                            <th><g:message code="match.awayTeam.label" default="Away Team" /></th>
-                        
-                            <th><g:message code="match.field.label" default="Field" /></th>
+                            <g:sortableColumn property="localTeam.name" title="${message(code: 'match.localTeam.label', default: 'Local Team')}" />
+
+                            <g:sortableColumn property="awayTeam.name" title="${message(code: 'match.awayTeam.label', default: 'Away Team')}" />
 
                         </tr>
                     </thead>
@@ -43,20 +43,20 @@
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
                             <td><g:link action="show" id="${matchInstance.id}">
-                                ${matchInstance.localTeam.name} <g:message code="match.name.vs" /> ${matchInstance.awayTeam.name}
+                                ${matchInstance?.localTeam} <g:message code="match.name.vs" /> ${matchInstance?.awayTeam}
                             </g:link></td>
+
+                            <td>${matchInstance?.discipline}</td>
 
                             <td><g:formatDate date="${matchInstance.startingTime}" /></td>
 
                             <td><g:formatDate date="${matchInstance.endingTime}" /></td>
 
-                            <td>${fieldValue(bean: matchInstance.field, field: "name")}</td>
+                            <td>${matchInstance?.field}</td>
 
-                            <td>${fieldValue(bean: matchInstance.localTeam, field: "name")}</td>
+                            <td>${matchInstance?.localTeam}</td>
                         
-                            <td>${fieldValue(bean: matchInstance.awayTeam, field: "name")}</td>
-                        
-                            <td>${fieldValue(bean: matchInstance.discipline, field: "name")}</td>
+                            <td>${matchInstance?.awayTeam}</td>
                         
                         </tr>
                     </g:each>

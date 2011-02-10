@@ -9,6 +9,10 @@ class PlayingField {
     String country
     List<Discipline> availableDisciplines
 
+    String toString() {
+        name
+    }
+
     static constraints = {
         name(blank: false)
         address(blank: false)

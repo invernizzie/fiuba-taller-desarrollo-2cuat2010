@@ -24,13 +24,13 @@ div.content {
 }
 
 a:link, a:visited, a:hover {
-    color: #666;
+    color: #d00;
     font-weight: bold;
     text-decoration: none;
 }
 
 h1 {
-    color: #48802c;
+    color: #a00;
     font-weight: normal;
     font-size: 16px;
     margin: .8em 0 .3em 0;
@@ -57,7 +57,7 @@ textarea {
 }
 
 input:focus, select:focus, textarea:focus {
-    border: 1px solid #b2d1ff;
+    border: 1px solid #ccc;
 }
 
 .body {
@@ -68,9 +68,11 @@ input:focus, select:focus, textarea:focus {
 /* HEADER */
 
 .layoutHeader {
-    font-size: 24px;
+    font-size: 36px;
     font-weight: bold;
     padding: 20px;
+    padding-top: 40px;
+    color: #960000;
 }
 
 /* NAVIGATION MENU */
@@ -110,9 +112,9 @@ input:focus, select:focus, textarea:focus {
 /* MESSAGES AND ERRORS */
 
 .message {
-    background: #f3f8fc url(../images/skin/information.png) 8px 50% no-repeat;
-    border: 1px solid #b2d1ff;
-    color: #006dba;
+    background: #fcf3f3 url(../images/skin/information.png) 8px 50% no-repeat;
+    border: 1px solid #ffa1a1;
+    color: #a00;
     margin: 10px 0 5px 0;
     padding: 5px 5px 5px 30px
 }
@@ -120,7 +122,7 @@ input:focus, select:focus, textarea:focus {
 div.errors {
     background: #fff3f3;
     border: 1px solid red;
-    color: #cc0000;
+    color: #f00;
     margin: 10px 0 5px 0;
     padding: 5px 0 5px 0;
 }
@@ -202,7 +204,7 @@ th.desc a {
     border-left: 1px solid #ddd;
 }
 .list th:hover, .list tr:hover {
-    background: #b2d1ff;
+    background: #cfcece;
 }
 
 /* PAGINATION */
@@ -238,13 +240,25 @@ th.desc a {
     padding: 5px;
 }
 .prop .name {
+    padding-top: 12px;
     text-align: left;
     width: 15%;
     white-space: nowrap;
 }
 .prop .value {
+    padding-top: 12px;
     text-align: left;
     width: 85%;
+}
+
+.prop .value select,
+.prop .value input,
+.prop .value textarea {
+    margin-top: -6px;
+}
+
+.prop .value input[type="checkbox"] {
+    margin-top: 5px;
 }
 
 /* ACTION BUTTONS */
