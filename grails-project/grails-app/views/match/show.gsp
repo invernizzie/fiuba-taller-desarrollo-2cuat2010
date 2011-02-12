@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'match.label', default: 'Match')}" />
-        <title>${matchInstance?.localTeam} <g:message code="match.name.vs" /> ${matchInstance?.awayTeam}</title>
+        <title><g:render template="matchName" model="[match: matchInstance]" /></title>
     </head>
     <body>
         <div class="nav">
@@ -14,70 +14,54 @@
             <span class="menuButton"><g:link class="create" action="create"><g:message code="match.organize.label" /></g:link></span>
         </div>
         <div class="body">
-            <h1>${matchInstance?.localTeam} <g:message code="match.name.vs" /> ${matchInstance?.awayTeam}</h1>
+            <h1><g:render template="matchName" model="[match: matchInstance]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
             <div class="dialog">
                 <table>
                     <tbody>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="match.awayTeam.label" default="Away Team" /></td>
-                            
-                            <td valign="top" class="value"><g:link controller="team" action="show" id="${matchInstance?.awayTeam?.id}">${matchInstance?.awayTeam?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="match.discipline.label" default="Discipline" /></td>
-                            
-                            <td valign="top" class="value"><g:link controller="discipline" action="show" id="${matchInstance?.discipline?.id}">${matchInstance?.discipline?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="match.endingTime.label" default="Ending Time" /></td>
-                            
-                            <td valign="top" class="value"><g:formatDate date="${matchInstance?.endingTime}" /></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="match.field.label" default="Field" /></td>
-                            
-                            <td valign="top" class="value"><g:link controller="playingField" action="show" id="${matchInstance?.field?.id}">${matchInstance?.field?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="match.localTeam.label" default="Local Team" /></td>
-                            
-                            <td valign="top" class="value"><g:link controller="team" action="show" id="${matchInstance?.localTeam?.id}">${matchInstance?.localTeam?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="match.owner.label" default="Owner" /></td>
-                            
-                            <td valign="top" class="value"><g:link controller="user" action="show" id="${matchInstance?.owner?.id}">${matchInstance?.owner?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="match.publicMatch.label" default="Public Match" /></td>
-                            
-                            <td valign="top" class="value"><g:formatBoolean boolean="${matchInstance?.publicMatch}" /></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="match.startingTime.label" default="Starting Time" /></td>
-                            
-                            <td valign="top" class="value"><g:formatDate date="${matchInstance?.startingTime}" /></td>
-                            
-                        </tr>
-                    
+
+                    <tr class="prop">
+                        <td valign="top" class="name"><g:message code="match.owner.label" default="Owner" /></td>
+                        <td valign="top" class="value"><g:link controller="user" action="show" id="${matchInstance?.owner?.id}">${matchInstance?.owner?.encodeAsHTML()}</g:link></td>
+                    </tr>
+
+                    <tr class="prop">
+                        <td valign="top" class="name"><g:message code="match.publicMatch.label" default="Public Match" /></td>
+                        <td valign="top" class="value"><g:formatBoolean boolean="${matchInstance?.publicMatch}" true="${message(code: 'yes')}" false="${message(code: 'no')}"/></td>
+                    </tr>
+
+                    <tr class="prop">
+                        <td valign="top" class="name"><g:message code="match.discipline.label" default="Discipline" /></td>
+                        <td valign="top" class="value"><g:link controller="discipline" action="show" id="${matchInstance?.discipline?.id}">${matchInstance?.discipline?.encodeAsHTML()}</g:link></td>
+                    </tr>
+
+                    <tr class="prop">
+                        <td valign="top" class="name"><g:message code="match.startingTime.label" default="Starting Time" /></td>
+                        <td valign="top" class="value"><g:formatDate date="${matchInstance?.startingTime}" /></td>
+                    </tr>
+
+                    <tr class="prop">
+                        <td valign="top" class="name"><g:message code="match.endingTime.label" default="Ending Time" /></td>
+                        <td valign="top" class="value"><g:formatDate date="${matchInstance?.endingTime}" /></td>
+                    </tr>
+
+                    <tr class="prop">
+                        <td valign="top" class="name"><g:message code="match.field.label" default="Field" /></td>
+                        <td valign="top" class="value"><g:link controller="playingField" action="show" id="${matchInstance?.field?.id}">${matchInstance?.field?.encodeAsHTML()}</g:link></td>
+                    </tr>
+
+                    <tr class="prop">
+                        <td valign="top" class="name"><g:message code="match.localTeam.label" default="Local Team" /></td>
+                        <td valign="top" class="value"><g:link controller="team" action="show" id="${matchInstance?.localTeam?.id}">${matchInstance?.localTeam?.encodeAsHTML()}</g:link></td>
+                    </tr>
+
+                    <tr class="prop">
+                        <td valign="top" class="name"><g:message code="match.awayTeam.label" default="Away Team" /></td>
+                        <td valign="top" class="value"><g:link controller="team" action="show" id="${matchInstance?.awayTeam?.id}">${matchInstance?.awayTeam?.encodeAsHTML()}</g:link></td>
+                    </tr>
+
                     </tbody>
                 </table>
             </div>

@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'match.label', default: 'Match')}" />
-        <title><g:message code="match.list.public.label" /></title>
+        <title><g:message code="match.list.label" /></title>
     </head>
     <body>
         <div class="nav">
@@ -13,7 +13,7 @@
             <span class="menuButton"><g:link class="create" action="create"><g:message code="match.organize.label" /></g:link></span>
         </div>
         <div class="body">
-            <h1><g:message code="match.list.public.label" args="[entityName]" /></h1>
+            <h1><g:message code="match.list.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -43,7 +43,7 @@
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
                             <td><g:link action="show" id="${matchInstance.id}">
-                                ${matchInstance?.localTeam} <g:message code="match.name.vs" /> ${matchInstance?.awayTeam}
+                                <g:render template="matchName" model="[match: matchInstance]" />
                             </g:link></td>
 
                             <td>${matchInstance?.discipline}</td>

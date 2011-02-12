@@ -1,5 +1,7 @@
 package com.teambook.model
 
+import com.teambook.model.exceptions.SameLocalAndAwayTeamException
+
 class MatchController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -15,18 +17,25 @@ class MatchController {
 
     def create = {
         def matchInstance = new Match()
+        matchInstance.publicMatch = true // Create public matches by default
         matchInstance.properties = params
         return [matchInstance: matchInstance]
     }
 
     def save = {
-        def matchInstance = new Match(params)
-        if (matchInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'match.label', default: 'Match'), matchInstance.id])}"
-            redirect(action: "show", id: matchInstance.id)
+        def match = new Match(params)
+        try {
+            match.checkValidity()
+        } catch (SameLocalAndAwayTeamException e) {
+            flash.message = "${message(code: 'match.error.sameLocalAndAway')}"
+            return render(view: "create", model: [matchInstance: match])
+        }
+        if (match.save(flush: true)) {
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'match.label', default: 'Match'), match.id])}"
+            redirect(action: "show", id: match.id)
         }
         else {
-            render(view: "create", model: [matchInstance: matchInstance])
+            render(view: "create", model: [matchInstance: match])
         }
     }
 

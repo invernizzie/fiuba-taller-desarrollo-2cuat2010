@@ -13,7 +13,7 @@
                 <img src="${resource(dir:'images',file:'spinner.gif')}" alt="${message(code:'spinner.alt',default:'Loading...')}" />
             </div>
             <div id="layoutHeader" class="layoutHeader">
-                <g:link action="index"><g:message code="header.home" /></g:link>
+                <g:link uri="/"><g:message code="header.home" /></g:link>
             </div>
             <g:layoutBody />
         </div>

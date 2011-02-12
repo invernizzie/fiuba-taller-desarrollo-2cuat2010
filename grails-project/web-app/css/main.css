@@ -258,7 +258,7 @@ th.desc a {
 }
 
 .prop .value input[type="checkbox"] {
-    margin-top: 5px;
+    margin-top: 0px;
 }
 
 /* ACTION BUTTONS */
