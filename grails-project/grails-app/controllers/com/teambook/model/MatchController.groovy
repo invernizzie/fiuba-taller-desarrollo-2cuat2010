@@ -11,8 +11,36 @@ class MatchController {
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [matchInstanceList: Match.list(params), matchInstanceTotal: Match.count()]
+        def criteria = Match.createCriteria()
+        def foundMatches = criteria.list {
+            if (params.query) {
+                or {
+                    localTeam {
+                        like("name", '%' + params.query + '%')
+                    }
+                    awayTeam {
+                        like("name", '%' + params.query + '%')
+                    }
+                }
+            }
+            maxResults(Math.min(params.max ? params.int('max') : 10, 100))
+        }
+        [matchInstanceList: foundMatches, matchInstanceTotal: foundMatches.size()]
+    }
+
+    def search = {
+        def criteria = Match.createCriteria()
+        def foundMatches = criteria.list {
+            or {
+                localTeam {
+                    like("name", '%' + params.query + '%')
+                }
+                awayTeam {
+                    like("name", '%' + params.query + '%')
+                }
+            }
+        }
+        render(view: 'list', model: [matchInstanceList: foundMatches, matchInstanceTotal: foundMatches.size()])
     }
 
     def create = {
@@ -74,6 +102,12 @@ class MatchController {
                 }
             }
             matchInstance.properties = params
+            try {
+                matchInstance.checkValidity()
+            } catch (SameLocalAndAwayTeamException e) {
+                flash.message = "${message(code: 'match.error.sameLocalAndAway')}"
+                return render(view: "create", model: [matchInstance: match])
+            }
             if (!matchInstance.hasErrors() && matchInstance.save(flush: true)) {
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'match.label', default: 'Match'), matchInstance.id])}"
                 redirect(action: "show", id: matchInstance.id)
