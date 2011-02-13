@@ -21,7 +21,6 @@
                 <table>
                     <thead>
                         <tr>
-
                             <th><g:message code="match.name.label" /></th>
 
                             <g:sortableColumn property="discipline.name" title="${message(code: 'match.discipline.label', default: 'Discipline')}" />
@@ -36,6 +35,7 @@
 
                             <g:sortableColumn property="awayTeam.name" title="${message(code: 'match.awayTeam.label', default: 'Away Team')}" />
 
+                            <g:sortableColumn property="publicMatch" title="${message(code: 'match.publicMatch.label')}" />
                         </tr>
                     </thead>
                     <tbody>
@@ -57,6 +57,8 @@
                             <td>${matchInstance?.localTeam}</td>
                         
                             <td>${matchInstance?.awayTeam}</td>
+
+                            <td><g:formatBoolean boolean="${matchInstance?.publicMatch}" true="${message(code: 'yes')}" false="${message(code: 'no')}"/></td>
                         
                         </tr>
                     </g:each>

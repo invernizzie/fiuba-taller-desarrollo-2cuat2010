@@ -11,3 +11,8 @@ if (Ajax && (Ajax != null)) {
 	  }
 	});
 }
+
+function replaceQuery(_this) {
+    _this.value = "";
+    _this.style.color = "black";
+}

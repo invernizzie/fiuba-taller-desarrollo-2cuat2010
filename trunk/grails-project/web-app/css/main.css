@@ -67,12 +67,25 @@ input:focus, select:focus, textarea:focus {
 
 /* HEADER */
 
-.layoutHeader {
-    font-size: 36px;
-    font-weight: bold;
-    padding: 20px;
+.header {
     padding-top: 40px;
+}
+
+.layoutHeader {
+    font-size: 40px;
+    font-weight: bold;
+    padding-left: 20px;
     color: #960000;
+    display: inline;
+}
+
+.headerSearch {
+    float: right;
+    padding-top: 15px;
+}
+
+input[type=text][name=query] {
+    color: gray;
 }
 
 /* NAVIGATION MENU */
