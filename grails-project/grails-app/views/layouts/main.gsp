@@ -24,6 +24,7 @@
                 </div>
             </div>
             <g:layoutBody />
+            <g:render template="/layouts/footer" />
         </div>
     </body>
 </html>
