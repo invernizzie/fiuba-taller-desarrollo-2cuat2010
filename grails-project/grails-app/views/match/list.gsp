@@ -17,6 +17,95 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
+            <%-- Opciones de filtrado --%>
+            <g:form action="list" id="filterForm">
+            <div class="dialog">
+                <table>
+                    <tbody>
+                    <tr class="prop">
+                        <td valign="top" class="name">
+                            <label for="matchName"><g:message code="match.name.label" /></label>
+                        </td>
+                        <td valign="top" colspan="3">
+                            <g:textField name="matchName" value="${matchName ?: ''}" size="60"/>
+                        </td>
+                    </tr>
+                    <tr class="prop">
+                        <td valign="top" class="name">
+                            <label for="disciplineId"><g:message code="match.discipline.label" /></label>
+                        </td>
+                        <td valign="top">
+                            <g:select name="disciplineId" from="${com.teambook.model.Discipline.list()}" optionKey="id" value="${disciplineId ?: 0}" noSelection="['null':message(code: 'match.list.filter.any.label')]" />
+                        </td>
+
+                        <td valign="top" class="name">
+                            <label for="matchOwner"><g:message code="match.owner.label" /></label>
+                        </td>
+                        <td valign="top">
+                            <g:textField name="matchOwner" value="${matchOwner ?: ''}" />
+                        </td>
+                    </tr>
+
+                    <tr class="prop">
+                        <td valign="top" class="name">
+                            <label for="localTeam"><g:message code="match.localTeam.label" /></label>
+                        </td>
+                        <td valign="top">
+                            <g:textField name="localTeam" value="${localTeam ?: ''}" />
+                        </td>
+
+                        <td valign="top" class="name">
+                            <label for="awayTeam"><g:message code="match.awayTeam.label" /></label>
+                        </td>
+                        <td valign="top">
+                            <g:textField name="awayTeam" value="${awayTeam ?: ''}" />
+                        </td>
+                    </tr>
+
+                    <%--
+                    <tr class="prop">
+                        <td valign="top" class="name">
+                            <label for="publicMatch"><g:message code="match.publicMatch.label" /></label>
+                        </td>
+                        <td valign="top">
+                            <g:checkBox name="publicMatch" value="${publicMatch ?: true}" />
+                        </td>
+
+                        <td valign="top" class="name">
+                            <label for="status"><g:message code="match.list.filter.status" /></label>
+                        </td>
+                        <td valign="top">
+                            <g:select name="status" optionKey="value" optionValue="name" from="${[
+                                    [name: message(code: 'match.list.filter.status.all'), value: 'all'],
+                                    [name: message(code: 'match.list.filter.status.played'), value: 'played'],
+                                    [name: message(code: 'match.list.filter.status.unplayed'), value: 'unplayed'] ]}" />
+                        </td>
+                    </tr>
+                    --%>
+
+                    <tr class="prop">
+                        <td valign="top" class="name">
+                            <label for="minDate"><g:message code="match.list.filter.minDate" /></label>
+                        </td>
+                        <td valign="top">
+                            <g:datePicker name="minDate" precision="day" value="${minDate ?: ''}" default="none" noSelection="['':'']" />
+                        </td>
+
+                        <td valign="top" class="name">
+                            <label for="maxDate"><g:message code="match.list.filter.maxDate" /></label>
+                        </td>
+                        <td valign="top">
+                            <g:datePicker name="maxDate" precision="day" value="${maxDate ?: ''}" default="none" noSelection="['':'']" />
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="buttons">
+                    <span class="button"><g:submitButton name="submit" class="filter" value="${message(code: 'match.list.filter.label')}" /></span>
+                </div>
+            </div>
+            </g:form>
+            <br />
             <div class="list">
                 <table>
                     <thead>
@@ -42,9 +131,7 @@
                     <g:each in="${matchInstanceList}" status="i" var="matchInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
-                            <td><g:link action="show" id="${matchInstance.id}">
-                                <g:render template="matchName" model="[match: matchInstance]" />
-                            </g:link></td>
+                            <td><g:link action="show" id="${matchInstance.id}">${matchInstance?.name}</g:link></td>
 
                             <td>${matchInstance?.discipline}</td>
 

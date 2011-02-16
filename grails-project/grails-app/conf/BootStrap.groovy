@@ -12,20 +12,17 @@ class BootStrap {
             def users = []
             users.add(new User(
                     username: 'user1',
-                    firstName: 'John',
-                    lastName: 'Doe',
+                    name: 'John Doe',
                     birthday: Date.parse('d-M-yyyy', '20-7-1975'),
                     email: 'johndoe@email.com'))
             users.add(new User(
                     username: 'user2',
-                    firstName: 'Paul',
-                    lastName: 'Smith',
+                    name: 'Paul Smith',
                     birthday: Date.parse('d-M-yyyy', '12-4-1983'),
                     email: 'psmith@mymail.com'))
             users.add(new User(
                     username: 'user3',
-                    firstName: 'Martin',
-                    lastName: 'Palermo',
+                    name: 'Martin Palermo',
                     birthday: Date.parse('d-M-yyyy', '7-11-1973'),
                     email: 'mpalermo@bocajrs.com.ar'
             ))
@@ -63,6 +60,7 @@ class BootStrap {
             manianaYUnaHora.add(Calendar.HOUR, 1)
 
             new Match(
+                    name: "Tenis el sabado",
                     startingTime: maniana.time,
                     endingTime: manianaYUnaHora.time,
                     publicMatch: true,
@@ -72,6 +70,7 @@ class BootStrap {
                     field: tennisField,
                     discipline: teams[0].discipline ).save(failOnError: true)
             new Match(
+                    name: "Mano a mano",
                     startingTime: maniana.time,
                     endingTime: manianaYUnaHora.time,
                     publicMatch: true,
@@ -81,6 +80,7 @@ class BootStrap {
                     field: tennisField,
                     discipline: teams[0].discipline ).save(failOnError: true)
             new Match(
+                    name: "Fulbacho",
                     startingTime: maniana.time,
                     endingTime: manianaYUnaHora.time,
                     publicMatch: true,

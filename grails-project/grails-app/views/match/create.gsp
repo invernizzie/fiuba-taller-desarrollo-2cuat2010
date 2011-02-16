@@ -28,79 +28,88 @@
                     <table>
                         <tbody>
 
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="discipline"><g:message code="match.discipline.label" default="Discipline" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'discipline', 'errors')}">
-                                    <g:select name="discipline.id" from="${com.teambook.model.Discipline.list()}" optionKey="id" value="${matchInstance?.discipline?.id}"  />
-                                </td>
-                            </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name">
+                                <label for="name"><g:message code="match.name.label" /></label>
+                            </td>
+                            <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'name', 'errors')}">
+                                <g:textField name="name" value="${matchInstance?.name}" size="60" />
+                            </td>
+                        </tr>
 
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="startingTime"><g:message code="match.startingTime.label" default="Starting Time" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'startingTime', 'errors')}">
-                                    <g:datePicker name="startingTime" precision="minute" value="${matchInstance?.startingTime}"  />
-                                </td>
-                            </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name">
+                                <label for="discipline.id"><g:message code="match.discipline.label" default="Discipline" /></label>
+                            </td>
+                            <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'discipline', 'errors')}">
+                                <g:select name="discipline.id" from="${com.teambook.model.Discipline.list()}" optionKey="id" value="${matchInstance?.discipline?.id}"  />
+                            </td>
+                        </tr>
 
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="endingTime"><g:message code="match.endingTime.label" default="Ending Time" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'endingTime', 'errors')}">
-                                    <g:datePicker name="endingTime" precision="minute" value="${matchInstance?.endingTime}"  />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="field"><g:message code="match.field.label" default="Field" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'field', 'errors')}">
-                                    <g:select name="field.id" from="${com.teambook.model.PlayingField.list()}" optionKey="id" value="${matchInstance?.field?.id}"  />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="localTeam"><g:message code="match.localTeam.label" default="Local Team" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'localTeam', 'errors')}">
-                                    <g:select name="localTeam.id" from="${com.teambook.model.Team.list()}" optionKey="id" value="${matchInstance?.localTeam?.id}"  />
-                                </td>
-                            </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name">
+                                <label for="startingTime"><g:message code="match.startingTime.label" default="Starting Time" /></label>
+                            </td>
+                            <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'startingTime', 'errors')}">
+                                <g:datePicker name="startingTime" precision="minute" value="${matchInstance?.startingTime}"  />
+                            </td>
+                        </tr>
 
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="awayTeam"><g:message code="match.awayTeam.label" default="Away Team" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'awayTeam', 'errors')}">
-                                    <g:select name="awayTeam.id" from="${com.teambook.model.Team.list()}" optionKey="id" value="${matchInstance?.awayTeam?.id}"  />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="owner"><g:message code="match.owner.label" default="Owner" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'owner', 'errors')}">
-                                    <g:select name="owner.id" from="${com.teambook.model.User.list()}" optionKey="id" value="${matchInstance?.owner?.id}"  />
-                                    <br/><span style="color: red">Debería setearlo el controller al usuario actual, pero todavía no hay autenticación</span>
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="publicMatch"><g:message code="match.publicMatch.label" default="Public Match" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'publicMatch', 'errors')}">
-                                    <g:checkBox name="publicMatch" value="${matchInstance?.publicMatch}" />
-                                </td>
-                            </tr>
-                        
+                        <tr class="prop">
+                            <td valign="top" class="name">
+                                <label for="endingTime"><g:message code="match.endingTime.label" default="Ending Time" /></label>
+                            </td>
+                            <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'endingTime', 'errors')}">
+                                <g:datePicker name="endingTime" precision="minute" value="${matchInstance?.endingTime}"  />
+                            </td>
+                        </tr>
+
+                        <tr class="prop">
+                            <td valign="top" class="name">
+                                <label for="field.id"><g:message code="match.field.label" default="Field" /></label>
+                            </td>
+                            <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'field', 'errors')}">
+                                <g:select name="field.id" from="${com.teambook.model.PlayingField.list()}" optionKey="id" value="${matchInstance?.field?.id}"  />
+                            </td>
+                        </tr>
+
+                        <tr class="prop">
+                            <td valign="top" class="name">
+                                <label for="localTeam.id"><g:message code="match.localTeam.label" default="Local Team" /></label>
+                            </td>
+                            <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'localTeam', 'errors')}">
+                                <g:select name="localTeam.id" from="${com.teambook.model.Team.list()}" optionKey="id" value="${matchInstance?.localTeam?.id}"  />
+                            </td>
+                        </tr>
+
+                        <tr class="prop">
+                            <td valign="top" class="name">
+                                <label for="awayTeam.id"><g:message code="match.awayTeam.label" default="Away Team" /></label>
+                            </td>
+                            <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'awayTeam', 'errors')}">
+                                <g:select name="awayTeam.id" from="${com.teambook.model.Team.list()}" optionKey="id" value="${matchInstance?.awayTeam?.id}"  />
+                            </td>
+                        </tr>
+
+                        <tr class="prop">
+                            <td valign="top" class="name">
+                                <label for="owner.id"><g:message code="match.owner.label" default="Owner" /></label>
+                            </td>
+                            <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'owner', 'errors')}">
+                                <g:select name="owner.id" from="${com.teambook.model.User.list()}" optionKey="id" value="${matchInstance?.owner?.id}"  />
+                                <br/><span style="color: red">Debería setearlo el controller al usuario actual, pero todavía no hay autenticación</span>
+                            </td>
+                        </tr>
+
+                        <tr class="prop">
+                            <td valign="top" class="name">
+                                <label for="publicMatch"><g:message code="match.publicMatch.label" default="Public Match" /></label>
+                            </td>
+                            <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'publicMatch', 'errors')}">
+                                <g:checkBox name="publicMatch" value="${matchInstance?.publicMatch}" />
+                            </td>
+                        </tr>
+
                         </tbody>
                     </table>
                 </div>
