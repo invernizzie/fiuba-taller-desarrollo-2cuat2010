@@ -5,19 +5,17 @@ class User {
     private static final int MINIMUM_AGE = 18
 
     String username
-    String firstName
-    String lastName
+    String name
     Date birthday
     String email
 
     String toString() {
-        "$firstName $lastName"
+        "$name"
     }
 
     static constraints = {
         username(blank: false)
-        firstName(blank: false)
-        lastName(blank: false)
+        name(blank: false)
         birthday(min: Calendar.getInstance().add(Calendar.YEAR, -MINIMUM_AGE))
         email(blank: false, email: true)
     }

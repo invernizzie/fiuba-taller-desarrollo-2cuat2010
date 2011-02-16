@@ -1,5 +1,6 @@
-package com.teambook.model
+package com.teambook.control
 
+import com.teambook.model.Match
 import com.teambook.model.exceptions.SameLocalAndAwayTeamException
 
 class MatchController {
@@ -13,34 +14,30 @@ class MatchController {
     def list = {
         def criteria = Match.createCriteria()
         def foundMatches = criteria.list {
-            if (params.query) {
-                or {
-                    localTeam {
-                        like("name", '%' + params.query + '%')
-                    }
-                    awayTeam {
-                        like("name", '%' + params.query + '%')
-                    }
+            // Esta sintaxis no es lo mas legible pero es corta
+            params.matchName ? ilike("name", "%${params.matchName}%") :null
+            if (params.disciplineId && (params.disciplineId != 'null'))
+                discipline {  // TODO Tiene que existir una mejor manera de hacer esto
+                    eq("id", Long.parseLong(params.disciplineId))
                 }
-            }
+            params.localTeam ?
+            localTeam {
+                ilike("name", "%${params.localTeam}%")
+            } :null
+            params.awayTeam ?
+            awayTeam {
+                ilike("name", "%${params.awayTeam}%")
+            } :null
+            params.minDate ? ge("startingTime", params.minDate) : null
+            params.maxDate ? le("endingTime", params.maxDate) : null
+            params.matchOwner ?
+            owner {
+                ilike("name", "%${params.matchOwner}%")
+            } :null
             maxResults(Math.min(params.max ? params.int('max') : 10, 100))
         }
-        [matchInstanceList: foundMatches, matchInstanceTotal: foundMatches.size()]
-    }
-
-    def search = {
-        def criteria = Match.createCriteria()
-        def foundMatches = criteria.list {
-            or {
-                localTeam {
-                    like("name", '%' + params.query + '%')
-                }
-                awayTeam {
-                    like("name", '%' + params.query + '%')
-                }
-            }
-        }
-        render(view: 'list', model: [matchInstanceList: foundMatches, matchInstanceTotal: foundMatches.size()])
+        params.putAll ([matchInstanceList: foundMatches, matchInstanceTotal: foundMatches.size()])
+        params
     }
 
     def create = {

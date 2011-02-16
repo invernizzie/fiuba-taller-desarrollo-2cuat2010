@@ -19,7 +19,7 @@
                 </div>
                 <div class="headerSearch">
                     <g:form controller="match" action="list">
-                        <g:textField name="query" value="${message(code: 'header.search.label')}" onfocus="replaceQuery(this)" />
+                        <g:textField name="matchName" value="${message(code: 'header.search.label')}" onfocus="replaceQuery(this)" />
                     </g:form>
                 </div>
             </div>

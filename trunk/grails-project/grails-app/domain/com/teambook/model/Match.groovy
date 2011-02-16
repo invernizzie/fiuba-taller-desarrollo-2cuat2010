@@ -4,6 +4,7 @@ import com.teambook.model.exceptions.SameLocalAndAwayTeamException
 
 class Match {
 
+    String name
     Date startingTime
     Date endingTime
     boolean publicMatch
@@ -18,7 +19,7 @@ class Match {
     Discipline discipline
 
     static constraints = {
-
+        name(blank: false)
     }
 
     // Can't use validate(), it's dynamically bound by Grails
