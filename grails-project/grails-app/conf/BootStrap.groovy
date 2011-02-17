@@ -11,16 +11,19 @@ class BootStrap {
 
             def users = []
             users.add(new User(
+                    facebookUid: 1,
                     username: 'user1',
                     name: 'John Doe',
                     birthday: Date.parse('d-M-yyyy', '20-7-1975'),
                     email: 'johndoe@email.com'))
             users.add(new User(
+                    facebookUid: 2,
                     username: 'user2',
                     name: 'Paul Smith',
                     birthday: Date.parse('d-M-yyyy', '12-4-1983'),
                     email: 'psmith@mymail.com'))
             users.add(new User(
+                    facebookUid: 3,
                     username: 'user3',
                     name: 'Martin Palermo',
                     birthday: Date.parse('d-M-yyyy', '7-11-1973'),
