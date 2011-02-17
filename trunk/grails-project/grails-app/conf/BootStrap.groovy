@@ -33,10 +33,16 @@ class BootStrap {
 
             new PlayingField(
                     name: 'Cancha de futbol 5',
+                    photoPath:'futbol1.jpg',
+                    city: 'Capital Federal',
+                    country: 'Argentina',
                     address: 'Suiza 1840',
                     availableDisciplines: [football]).save(failOnError: true)
             def tennisField = new PlayingField(
                     name: 'Club de tenis',
+                    photoPath:'tenis1.jpg',
+                    city: 'Capital Federal',
+                    country: 'Argentina',
                     address: 'Jose Hernandez 2930 entre Martin Fierro y Sgto. Cruz',
                     availableDisciplines: [singlesTennis, doublesTennis])
             tennisField.save(failOnError: true)

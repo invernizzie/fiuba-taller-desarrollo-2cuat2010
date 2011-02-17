@@ -9,6 +9,9 @@ class PlayingField {
     String country
     List<Discipline> availableDisciplines
 
+
+	String photoPath
+	
     String toString() {
         name
     }
@@ -19,5 +22,7 @@ class PlayingField {
         city(nullable: true)
         state(nullable: true)
         country(nullable: true)
+		photoPath(nullable: true)
+
     }
 }
