@@ -68,12 +68,13 @@ input:focus, select:focus, textarea:focus {
 /* HEADER */
 
 .header {
-    padding-top: 40px;
+    padding-top: 10px;
 }
 
 .layoutHeader {
     font-size: 40px;
     font-weight: bold;
+    text-shadow: 0.05em 0.05em 0.1em #ccc;
     padding-left: 20px;
     color: #960000;
     display: inline;
@@ -82,6 +83,12 @@ input:focus, select:focus, textarea:focus {
 .headerSearch {
     float: right;
     padding-top: 15px;
+    padding-right: 20px;
+}
+
+.headerFBConnect {
+    padding-right: 20px;
+    text-align: right;
 }
 
 input[type=text][name=query] {
@@ -123,6 +130,16 @@ input[type=text][name=query] {
 }
 
 /* MESSAGES AND ERRORS */
+
+.bigMessage {
+    text-align: center;
+    width: 400px;
+    margin: auto;
+    border: 1px #ccc;
+    padding-top: 20px;
+    font-size: 16px;
+    text-shadow: 1px 1px #ccc;
+}
 
 .message {
     background: #fcf3f3 url(../images/skin/information.png) 8px 50% no-repeat;

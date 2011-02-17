@@ -9,16 +9,14 @@
         <g:javascript library="prototype" />
         <%--<fbg:resources />--%>
         <script type="text/javascript">
-        function facebookLogin() {
-            FB.getLoginStatus(function(response) {
-                if (response.session) {
-                    alert("UID: " + response.session.uid + "\nAccess token: " + response.session.access_token);
-                    // logged in and connected user, someone you know
-                    //window.location ="${createLink(controller:'auth', action:'facebookLogin')}";
-                }
-            });
-        }
-    </script>
+            function facebookLogin() {
+                FB.getLoginStatus(function(response) {
+                    if (response.session) {
+                        window.location ="${createLink(controller: 'user', action:'fbLogin')}";
+                    }
+                });
+            }
+        </script>
     </head>
     <body>
         <div id="fb-root"></div>
@@ -28,6 +26,16 @@
         </script>
         <div class="content">
             <div class="header">
+                <%-- TODO: Si esta loggeado mostrar su nombre y no este boton --%>
+                <div class="headerFBConnect">
+                <g:if test="${session.user}">
+                    ${session.user.name} | <g:link controller="user" action="logout"><g:message code="auth.logout" /></g:link>
+                </g:if><g:else>
+                    <fb:login-button perms="email,publish_stream" onlogin="facebookLogin();" size="large">
+                        <g:message code="auth.login.facebook"/>
+                    </fb:login-button>
+                </g:else>
+                </div>
                 <div id="spinner" class="spinner" style="display:none;">
                     <img src="${resource(dir:'images',file:'spinner.gif')}" alt="${message(code:'spinner.alt',default:'Loading...')}" />
                 </div>
@@ -39,9 +47,6 @@
                         <g:textField name="matchName" value="${message(code: 'header.search.label')}" onfocus="replaceQuery(this)" />
                     </g:form>
                 </div>
-                <fb:login-button perms="email,publish_stream" onlogin="facebookLogin();" size="large">
-                    <g:message code="auth.login.facebook"/>
-                </fb:login-button>
             </div>
             <g:layoutBody />
             <g:render template="/layouts/footer" />
