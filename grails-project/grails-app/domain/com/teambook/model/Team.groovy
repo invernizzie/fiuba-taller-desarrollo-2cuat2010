@@ -3,7 +3,9 @@ package com.teambook.model
 class Team {
 
     String name
-    List<User> players
+	
+	static hasMany = [affiliations:Affiliation]
+    
     Discipline discipline
 
     String toString() {
@@ -12,6 +14,5 @@ class Team {
 
     static constraints = {
         name(blank: false)
-        players(minSize: 1)
     }
 }

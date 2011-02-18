@@ -10,25 +10,31 @@ class BootStrap {
             disciplines.each { it.save(failOnError: true) }
 
             def users = []
+            def playerPalermo = new User(
+                    facebookUid: 3,
+                    username: 'user3',
+                    name: 'Martin Palermo',
+                    birthday: Date.parse('d-M-yyyy', '7-11-1973'),
+                    email: 'mpalermo@bocajrs.com.ar',
+                    player: new Player()
+            )
+            
+            users.add(playerPalermo)
             users.add(new User(
                     facebookUid: 1,
                     username: 'user1',
                     name: 'John Doe',
                     birthday: Date.parse('d-M-yyyy', '20-7-1975'),
-                    email: 'johndoe@email.com'))
+                    email: 'johndoe@email.com',
+                    player: new Player()))
             users.add(new User(
                     facebookUid: 2,
                     username: 'user2',
                     name: 'Paul Smith',
                     birthday: Date.parse('d-M-yyyy', '12-4-1983'),
-                    email: 'psmith@mymail.com'))
-            users.add(new User(
-                    facebookUid: 3,
-                    username: 'user3',
-                    name: 'Martin Palermo',
-                    birthday: Date.parse('d-M-yyyy', '7-11-1973'),
-                    email: 'mpalermo@bocajrs.com.ar'
-            ))
+                    email: 'psmith@mymail.com',
+                    player: new Player()))
+
             users.each { it.save(failOnError: true) }
 
             new PlayingField(
@@ -48,18 +54,17 @@ class BootStrap {
             tennisField.save(failOnError: true)
 
             def teams = []
-            teams.add new Team(
-                    name: 'John Federer',
-                    players: [users[0]],
-                    discipline: singlesTennis)
-            teams.add new Team(
-                    name: 'Paul',
-                    players: [users[1]],
-                    discipline: singlesTennis)
-            teams.add new Team(
+            def teamBoca = new Team(
                     name: 'Boca Junios',
-                    players: [users[2]],
                     discipline: football)
+            teams.add(teamBoca)        
+            teams.add new Team(
+                    name: 'John Federer',               
+                    discipline: singlesTennis)
+            teams.add new Team(
+                    name: 'Paul',                   
+                    discipline: singlesTennis)
+
             teams.each { it.save(failOnError: true) }
 
             def maniana = Calendar.instance
@@ -98,6 +103,9 @@ class BootStrap {
                     awayTeam: teams[1],
                     field: tennisField,
                     discipline: teams[2].discipline ).save(failOnError: true)
+                    
+        
+
     }
     def destroy = {
     }

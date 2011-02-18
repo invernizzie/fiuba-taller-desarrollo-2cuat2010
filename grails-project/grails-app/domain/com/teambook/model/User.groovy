@@ -6,6 +6,8 @@ class User {
 
     String facebookUid
 
+	Player player
+
     String username // FIXME Probablemente no aplica
     String name
     Date birthday
@@ -24,5 +26,6 @@ class User {
            si el usuario lo permite pero es al pedo */
         birthday(nullable: true)
         email(blank: false, email: true)
+        player(nullable:true)
     }
 }

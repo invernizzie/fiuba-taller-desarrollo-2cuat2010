@@ -19,11 +19,14 @@ class DisciplineController {
         def disciplineInstance = new Discipline()
         disciplineInstance.playersPerTeam=1 // one player by default
         disciplineInstance.properties = params
+    
         return [disciplineInstance: disciplineInstance]
     }
 
     def save = {
+	   
         def disciplineInstance = new Discipline(params)
+     
         if (disciplineInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'discipline.label', default: 'Discipline'), disciplineInstance.id])}"
             redirect(action: "show", id: disciplineInstance.id)
