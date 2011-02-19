@@ -91,6 +91,7 @@
                             </td>
                         </tr>
 
+                        <%--
                         <tr class="prop">
                             <td valign="top" class="name">
                                 <label for="owner.id"><g:message code="match.owner.label" default="Owner" /></label>
@@ -100,6 +101,7 @@
                                 <br/><span style="color: red">Debería setearlo el controller al usuario actual, pero todavía no hay autenticación</span>
                             </td>
                         </tr>
+                        --%>
 
                         <tr class="prop">
                             <td valign="top" class="name">

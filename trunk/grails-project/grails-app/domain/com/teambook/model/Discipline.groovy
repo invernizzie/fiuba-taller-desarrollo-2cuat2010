@@ -7,6 +7,9 @@ class Discipline {
     // How many players a team of this discipline must have
     int playersPerTeam
 
+    // Whether a match can be drawn
+    boolean tieable
+
     String toString() {
         name
     }
