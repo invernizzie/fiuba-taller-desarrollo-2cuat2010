@@ -1,6 +1,7 @@
 package com.teambook.control
 
 import com.teambook.model.Affiliation
+import com.teambook.exceptions.NoFacebookSessionException
 
 class AffiliationController {
 
@@ -23,8 +24,11 @@ class AffiliationController {
 
     def save = {
         def affiliationInstance = new Affiliation(params)
+		affiliationInstance.player = session.user.player
+		affiliationInstance.gamesPlayed = 0
+	    
         if (affiliationInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'affiliation.label', default: 'Affiliation'), affiliationInstance.id])}"
+            flash.message = "${message(code: 'affiliation.created.message', args: [message(code: 'affiliation.label', default: 'Affiliation'), affiliationInstance.id])}"
             redirect(action: "show", id: affiliationInstance.id)
         }
         else {
