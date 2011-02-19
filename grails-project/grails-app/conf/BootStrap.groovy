@@ -3,9 +3,9 @@ import com.teambook.model.*
 class BootStrap {
 
     def init = { servletContext ->
-            def football = new Discipline(name: "Futbol 5", playersPerTeam: 5);
-            def singlesTennis = new Discipline(name: "Tenis singles", playersPerTeam: 1)
-            def doublesTennis = new Discipline(name: "Tenis dobles", playersPerTeam: 2)
+            def football = new Discipline(name: "Futbol 5", playersPerTeam: 5, tieable: true)
+            def singlesTennis = new Discipline(name: "Tenis singles", playersPerTeam: 1, tieable: false)
+            def doublesTennis = new Discipline(name: "Tenis dobles", playersPerTeam: 2, tieable: false)
             def disciplines = [football, singlesTennis, doublesTennis]
             def player1 = new Player()
             def player2 = new Player()
@@ -13,7 +13,6 @@ class BootStrap {
             disciplines.each { it.save(failOnError: true) }
 
             def users = []
-           
             users.add(new User(
                     facebookUid: 1,
                     username: 'user1',
@@ -73,6 +72,11 @@ class BootStrap {
 
             teams.each { it.save(failOnError: true) }
 
+            def today = Calendar.instance
+            def yesterday = today.clone()
+            yesterday.add(Calendar.DAY_OF_YEAR, -1)
+            def yesterdayPlusOneHour = yesterday.clone()
+            yesterdayPlusOneHour.add(Calendar.HOUR_OF_DAY, 1)
             def maniana = Calendar.instance
             maniana.add(Calendar.DAY_OF_YEAR, 1)
             def manianaYUnaHora = Calendar.instance
@@ -81,14 +85,16 @@ class BootStrap {
 
             new Match(
                     name: "Tenis el sabado",
-                    startingTime: maniana.time,
-                    endingTime: manianaYUnaHora.time,
+                    startingTime: yesterday.time,
+                    endingTime: yesterdayPlusOneHour.time,
                     publicMatch: true,
                     owner: users[0],
-                    localTeam: teams[0],
-                    awayTeam: teams[1],
+                    localTeam: teams[1],
+                    awayTeam: teams[2],
                     field: tennisField,
-                    discipline: teams[0].discipline ).save(failOnError: true)
+                    outcome: Outcome.LOCAL_WON,
+                    score: '6-4, 3-6, 6-3',
+                    discipline: teams[1].discipline ).save(failOnError: true)
             new Match(
                     name: "Mano a mano",
                     startingTime: maniana.time,

@@ -1,6 +1,7 @@
 package com.teambook.control
 
 import com.teambook.model.Match
+import com.teambook.model.Outcome
 import com.teambook.model.exceptions.SameLocalAndAwayTeamException
 
 class MatchController {
@@ -49,6 +50,7 @@ class MatchController {
 
     def save = {
         def match = new Match(params)
+        match.owner = session.user
         try {
             match.checkValidity()
         } catch (SameLocalAndAwayTeamException e) {
@@ -72,6 +74,34 @@ class MatchController {
         }
         else {
             [matchInstance: matchInstance]
+        }
+    }
+
+    def registerOutcome = {
+        def matchInstance = Match.get(params.id)
+        if (!matchInstance) {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'match.label', default: 'Match'), params.id])}"
+            return redirect(action: "show", params: params)
+        }
+        if (matchInstance.owner.id != session.user.id) {
+            flash.message = "${message(code: 'match.error.notYourMatch')}"
+            return redirect(action: "show", params: params)
+        }
+        if (matchInstance.endingTime.after(new Date())) {
+            flash.message = "${message(code: 'match.error.notPlayed')}"
+            return redirect(action: "show", params: params)
+        }
+        def outcome = Outcome.valueOf(params.outcome)
+        if (!outcome) {
+            flash.message = "${message(code: 'match.error.invalidOutcome')}"
+            return redirect(action: "show", params: params)
+        }
+        matchInstance.outcome = outcome
+        matchInstance.score = params.score
+        if (matchInstance.save(flush: true)) {
+            redirect(action: "show", params: params)
+        } else {
+            redirect(action: "show", params: params)
         }
     }
 
