@@ -7,33 +7,39 @@ class BootStrap {
             def singlesTennis = new Discipline(name: "Tenis singles", playersPerTeam: 1)
             def doublesTennis = new Discipline(name: "Tenis dobles", playersPerTeam: 2)
             def disciplines = [football, singlesTennis, doublesTennis]
+            def player1 = new Player()
+            def player2 = new Player()
+            def player3 = new Player()
             disciplines.each { it.save(failOnError: true) }
 
             def users = []
-            def playerPalermo = new User(
-                    facebookUid: 3,
-                    username: 'user3',
-                    name: 'Martin Palermo',
-                    birthday: Date.parse('d-M-yyyy', '7-11-1973'),
-                    email: 'mpalermo@bocajrs.com.ar',
-                    player: new Player()
-            )
-            
-            users.add(playerPalermo)
+           
             users.add(new User(
                     facebookUid: 1,
                     username: 'user1',
                     name: 'John Doe',
                     birthday: Date.parse('d-M-yyyy', '20-7-1975'),
                     email: 'johndoe@email.com',
-                    player: new Player()))
+                    player: player2))
             users.add(new User(
                     facebookUid: 2,
                     username: 'user2',
                     name: 'Paul Smith',
                     birthday: Date.parse('d-M-yyyy', '12-4-1983'),
                     email: 'psmith@mymail.com',
-                    player: new Player()))
+                    player: player3))
+                    
+             def userPalermo = new User(
+                    facebookUid: 3,
+                    username: 'user3',
+                    name: 'Martin Palermo',
+                    birthday: Date.parse('d-M-yyyy', '7-11-1973'),
+                    email: 'mpalermo@bocajrs.com.ar',
+                    player: player1
+            )
+            
+            users.add(userPalermo)        
+                    
 
             users.each { it.save(failOnError: true) }
 
@@ -104,8 +110,33 @@ class BootStrap {
                     field: tennisField,
                     discipline: teams[2].discipline ).save(failOnError: true)
                     
-        
-
+        	new Rating(
+        			user: userPalermo,
+        			player: player2,
+        			discipline: football,
+        			rating: '5'
+        	).save(failOnError:true)
+        	
+        	new Rating(
+        			user: userPalermo,
+        			player: player2,
+        			discipline: football,
+        			rating: '4'
+        	).save(failOnError:true)
+        	
+        	new Rating(
+        			user: userPalermo,
+        			player: player2,
+        			discipline: football,
+        			rating: '1'
+        	).save(failOnError:true)
+        	
+        	new Rating(
+        			user: userPalermo,
+        			player: player2,
+        			discipline: singlesTennis,
+        			rating: '2'
+        	).save(failOnError:true)
     }
     def destroy = {
     }
