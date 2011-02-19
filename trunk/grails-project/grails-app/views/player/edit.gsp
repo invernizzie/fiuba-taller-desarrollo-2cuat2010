@@ -58,6 +58,22 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                  <label for="ratings"><g:message code="player.ratings.label" default="Ratings" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: playerInstance, field: 'ratings', 'errors')}">
+                                    
+<ul>
+<g:each in="${playerInstance?.ratings?}" var="r">
+    <li><g:link controller="rating" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+</g:each>
+</ul>
+<g:link controller="rating" action="create" params="['player.id': playerInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'rating.label', default: 'Rating')])}</g:link>
+
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                   <label for="user"><g:message code="player.user.label" default="User" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: playerInstance, field: 'user', 'errors')}">

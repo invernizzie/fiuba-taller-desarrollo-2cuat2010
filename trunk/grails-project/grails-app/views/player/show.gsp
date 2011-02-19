@@ -50,6 +50,32 @@
                         </tr>
                     
                         <tr class="prop">
+                            <td valign="top" class="name"><g:message code="player.ratings.label" default="Ratings" /></td>
+                            
+                            <td valign="top" style="text-align: left;" class="value">
+                                <ul>
+                                <g:each in="${playerInstance.ratings}" var="r">
+                                    <li><g:link controller="rating" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+                                </g:each>
+                                </ul>
+                            </td>
+                            
+                        </tr>
+                        
+                         <tr class="prop">
+                            <td valign="top" class="name"><g:message code="player.averageRating.label" default="averageRatings" /></td>
+                            
+                            <td valign="top" style="text-align: left;" class="value">
+                                <ul>
+                                <g:each in="${playerInstance.getRatingsByDiscipline()}" var="r">
+                                    <li> ${r.key+" --> "+r.value} </li>
+                                </g:each>
+                                </ul>
+                            </td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="player.user.label" default="User" /></td>
                             
                             <td valign="top" class="value"><g:link controller="user" action="show" id="${playerInstance?.user?.id}">${playerInstance?.user?.encodeAsHTML()}</g:link></td>

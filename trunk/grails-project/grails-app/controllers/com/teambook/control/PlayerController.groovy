@@ -2,7 +2,6 @@ package com.teambook.control
 
 import com.teambook.model.Player
 
-
 class PlayerController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
