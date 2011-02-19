@@ -37,24 +37,6 @@
                                 </td>
                             </tr>
                         
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="player"><g:message code="affiliation.player.label" default="Player" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: affiliationInstance, field: 'player', 'errors')}">
-                                    <g:select name="player.id" from="${com.teambook.model.Player.list()}" optionKey="id" value="${affiliationInstance?.player?.id}"  />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="gamesPlayed"><g:message code="affiliation.gamesPlayed.label" default="Games Played" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: affiliationInstance, field: 'gamesPlayed', 'errors')}">
-                                    <g:textField name="gamesPlayed" value="${fieldValue(bean: affiliationInstance, field: 'gamesPlayed')}" />
-                                </td>
-                            </tr>
-                        
                         </tbody>
                     </table>
                 </div>
