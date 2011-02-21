@@ -44,34 +44,34 @@
 
                     <tr class="prop">
                         <td valign="top" class="name"><g:message code="match.owner.label" default="Owner" /></td>
-                        <td valign="top" class="value"><g:link controller="user" action="show" id="${matchInstance?.owner?.id}">${matchInstance?.owner?.encodeAsHTML()}</g:link></td>
+                        <td valign="top" class="value" colspan="3"><g:link controller="user" action="show" id="${matchInstance?.owner?.id}">${matchInstance?.owner?.encodeAsHTML()}</g:link></td>
                     </tr>
 
                     <tr class="prop">
                         <td valign="top" class="name"><g:message code="match.publicMatch.label" default="Public Match" /></td>
-                        <td valign="top" class="value"><g:formatBoolean boolean="${matchInstance?.publicMatch}" true="${message(code: 'yes')}" false="${message(code: 'no')}"/></td>
+                        <td valign="top" class="value" colspan="3"><g:formatBoolean boolean="${matchInstance?.publicMatch}" true="${message(code: 'yes')}" false="${message(code: 'no')}"/></td>
                     </tr>
 
                     <tr class="prop">
                         <td valign="top" class="name"><g:message code="match.discipline.label" default="Discipline" /></td>
-                        <td valign="top" class="value"><g:link controller="discipline" action="show" id="${matchInstance?.discipline?.id}">${matchInstance?.discipline?.encodeAsHTML()}</g:link></td>
+                        <td valign="top" class="value" colspan="3"><g:link controller="discipline" action="show" id="${matchInstance?.discipline?.id}">${matchInstance?.discipline?.encodeAsHTML()}</g:link></td>
                     </tr>
 
                     <tr class="prop">
                         <td valign="top" class="name"><g:message code="match.startingTime.label" default="Starting Time" /></td>
-                        <td valign="top" class="value"><g:formatDate date="${matchInstance?.startingTime}" /></td>
+                        <td valign="top" class="value" colspan="3"><g:formatDate date="${matchInstance?.startingTime}" /></td>
                     </tr>
 
                     <tr class="prop">
                         <td valign="top" class="name"><g:message code="match.endingTime.label" default="Ending Time" /></td>
-                        <td valign="top" class="value"><g:formatDate date="${matchInstance?.endingTime}" /></td>
+                        <td valign="top" class="value" colspan="3"><g:formatDate date="${matchInstance?.endingTime}" /></td>
                     </tr>
 
                     <tr class="prop">
                         <td valign="top" class="name"><g:message code="match.field.label" default="Field" /></td>
-                        <td valign="top" class="value"><g:link controller="playingField" action="show" id="${matchInstance?.field?.id}">${matchInstance?.field?.encodeAsHTML()}</g:link></td>
+                        <td valign="top" class="value" colspan="3"><g:link controller="playingField" action="show" id="${matchInstance?.field?.id}">${matchInstance?.field?.encodeAsHTML()}</g:link></td>
                     </tr>
-
+                    <%--
                     <tr class="prop">
                         <td valign="top" class="name"><g:message code="match.localTeam.label" default="Local Team" /></td>
                         <td valign="top" class="value"><g:link controller="team" action="show" id="${matchInstance?.localTeam?.id}">${matchInstance?.localTeam?.encodeAsHTML()}</g:link></td>
@@ -81,9 +81,13 @@
                         <td valign="top" class="name"><g:message code="match.awayTeam.label" default="Away Team" /></td>
                         <td valign="top" class="value"><g:link controller="team" action="show" id="${matchInstance?.awayTeam?.id}">${matchInstance?.awayTeam?.encodeAsHTML()}</g:link></td>
                     </tr>
-
+                    --%>
                     </tbody>
                 </table>
+            </div>
+            <div class="teamLists">
+                <g:render template="teamList" model="[team: matchInstance.localTeam]" />
+                <g:render template="teamList" model="[team: matchInstance.awayTeam]" />
             </div>
             <g:if test="${(matchInstance.owner.id == session.user.id) && matchInstance.scoreToBeRegistered}">
             <div class="buttons">
