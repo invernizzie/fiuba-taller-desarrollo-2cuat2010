@@ -30,10 +30,10 @@ a:link, a:visited, a:hover {
 }
 
 h1 {
-    color: #a00;
+    color: #d00;
     font-weight: normal;
     font-size: 16px;
-    text-shadow: 1px 1px #ddd;
+    text-shadow: 0 1px #ddd;
     margin: .8em 0 .3em 0;
 }
 
@@ -77,11 +77,8 @@ div .matchOutcome {
     right: 10px;
     text-align: center;
     font-size: 18px;
-    text-shadow: 1px 1px #ddd;
-}
-
-.score {
-    font-size: 28px;
+    text-shadow: 0 1px #ddd;
+    color: #d00;
 }
 
 /* HEADER */
@@ -154,7 +151,7 @@ input[type=text][name=query] {
     text-align: center;
     width: 400px;
     margin: auto;
-    border: 1px #ccc;
+    border: 1px solid #ccc;
     padding-top: 20px;
     font-size: 16px;
     text-shadow: 1px 1px #ccc;
@@ -362,4 +359,28 @@ padding: 2em 1em 2em 1em;
 margin-bottom: 1em;
 margin-top: 1em;
 clear: both;
+}
+
+/* MATCH */
+
+.score {
+    font-size: 28px;
+}
+
+div .teamList {
+    display: inline-block;
+    margin: 10px 5px 0 5px;
+    padding: 0 10px 10px 10px;
+    border: 1px solid #ccc;
+    min-width: 280px;
+    text-align: center;
+}
+
+.teamList .teamName {
+    margin-bottom: 0.5em;
+    font-weight: normal;
+}
+
+.teamList .playerLine {
+    text-align: left;
 }
