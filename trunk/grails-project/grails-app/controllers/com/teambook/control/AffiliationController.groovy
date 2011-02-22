@@ -1,11 +1,10 @@
 package com.teambook.control
 
 import com.teambook.model.Affiliation
-import com.teambook.exceptions.NoFacebookSessionException
 
 class AffiliationController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [update: "POST", delete: "POST"]
 
     def index = {
         redirect(action: "list", params: params)
@@ -24,6 +23,12 @@ class AffiliationController {
 
     def save = {
         def affiliationInstance = new Affiliation(params)
+        // TODO Pasar a un validator
+        if (affiliationInstance.team.hasPlayer(session.user.player)) {
+            flash.message = "${message(code: 'affiliation.error.alreadyAffiliated')}"
+            //redirect(action: "create", params: [affiliationInstance: affiliationInstance])
+            return render(view: "create", model: [affiliationInstance: affiliationInstance])
+        }
 		affiliationInstance.player = session.user.player
 		affiliationInstance.gamesPlayed = 0
 	    

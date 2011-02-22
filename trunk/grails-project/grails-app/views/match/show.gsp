@@ -15,9 +15,7 @@
         </div>
         <div class="body">
             <h1>${matchInstance.name}</h1>
-            <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
-            </g:if>
+            <div class="message" ${(!flash.message) ? 'style="display: none;"' : ''} id="message">${flash.message}</div>
             <g:hasErrors bean="${matchInstance}">
                 <div class="errors">
                     <g:renderErrors bean="${matchInstance}" as="list" />
@@ -86,8 +84,12 @@
                 </table>
             </div>
             <div class="teamLists">
-                <g:render template="teamList" model="[team: matchInstance.localTeam]" />
-                <g:render template="teamList" model="[team: matchInstance.awayTeam]" />
+                <div id="teamList${matchInstance.localTeam.id}" class="inlineDiv">
+                    <g:render template="teamList" model="[team: matchInstance.localTeam]" />
+                </div>
+                <div id="teamList${matchInstance.awayTeam.id}" class="inlineDiv">
+                    <g:render template="teamList" model="[team: matchInstance.awayTeam]" />
+                </div>
             </div>
             <g:if test="${(matchInstance.owner.id == session.user.id) && matchInstance.scoreToBeRegistered}">
             <div class="buttons">

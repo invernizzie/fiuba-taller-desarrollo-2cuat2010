@@ -8,7 +8,7 @@ class SecurityFilters {
             before = {
                 if (!controllerName && !actionName) // FIXME Por ahora identifico asi la home, luego habra un controller
                     return true
-                if (!session.user) {
+                if (!session?.user) {
                     // Hay codigo duplicado porque este closure del orto no funciona, necesito aprender mas groovy
                     //loginRedirect(controllerName, actionName)
                     redirect(
@@ -26,7 +26,7 @@ class SecurityFilters {
             before = {
                 if (!controllerName && !actionName) // FIXME Por ahora identifico asi la home, luego habra un controller
                     return true
-                if (!session.user) {
+                if (!session?.user) {
                     redirect(
                             controller: 'user',
                             action: 'fbLogin',

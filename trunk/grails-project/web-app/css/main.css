@@ -149,10 +149,11 @@ input[type=text][name=query] {
 
 .bigMessage {
     text-align: center;
-    width: 400px;
+    width: 24em;
     margin: auto;
+    margin-top: 2em;
     border: 1px solid #ccc;
-    padding-top: 20px;
+    padding: 10px;
     font-size: 16px;
     text-shadow: 1px 1px #ccc;
 }
@@ -367,6 +368,10 @@ clear: both;
     font-size: 28px;
 }
 
+div .inlineDiv {
+    display: inline-block;
+}
+
 div .teamList {
     display: inline-block;
     margin: 10px 5px 0 5px;
@@ -374,6 +379,7 @@ div .teamList {
     border: 1px solid #ccc;
     min-width: 280px;
     text-align: center;
+    vertical-align: top;
 }
 
 .teamList .teamName {
@@ -383,4 +389,20 @@ div .teamList {
 
 .teamList .playerLine {
     text-align: left;
+}
+
+.teamList .teamActions {
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    padding: 4px;
+}
+
+.teamList .joinTeam {
+    text-align: left;
+    margin: auto;
+}
+
+.teamList img {
+    margin-bottom: -4px;
+    padding-right: 2px;
 }
