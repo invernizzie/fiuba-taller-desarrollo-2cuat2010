@@ -1,5 +1,6 @@
 package com.teambook.control
 
+import com.teambook.model.Affiliation
 import com.teambook.model.Match
 import com.teambook.model.Outcome
 import com.teambook.model.exceptions.SameLocalAndAwayTeamException
@@ -102,6 +103,25 @@ class MatchController {
             redirect(action: "show", params: params)
         } else {
             redirect(action: "show", params: params)
+        }
+    }
+
+    def teamListJoin = {
+        def affiliationInstance = new Affiliation(params)
+        // TODO Pasar a un validator
+        if (affiliationInstance.team.hasPlayer(session.user.player)) {
+            return render(status: 500, text: message(code: 'affiliation.error.alreadyAffiliated'))
+        }
+		affiliationInstance.player = session.user.player
+		affiliationInstance.gamesPlayed = 0
+
+        affiliationInstance.team.addToAffiliations(affiliationInstance)
+
+        if (affiliationInstance.save(flush: true) && affiliationInstance.team.save(flush: true)) {
+            render(template: 'teamList', model: [team: affiliationInstance.team])
+        }
+        else {
+            render(status: 500, text: message(code: 'errors.internal'))
         }
     }
 
