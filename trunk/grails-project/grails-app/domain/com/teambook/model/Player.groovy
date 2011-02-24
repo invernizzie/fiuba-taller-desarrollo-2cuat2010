@@ -16,7 +16,7 @@ class Player {
     
     }
     
-    static transients = ['ratingsByDiscipline'] 
+    static transients = ['ratingsByDiscipline', 'ratingForDiscipline']
 		    
     
     def getRatingsByDiscipline = {
@@ -37,5 +37,18 @@ class Player {
  	
  		
     	ratingByDisciplineSum
+    }
+
+    def getRatingForDiscipline(Discipline discipline) {
+        def sum = 0
+        def count = 0
+
+        ratings.each { rating ->
+            if (rating.discipline.id == discipline.id) {
+                sum += rating.rating
+                count++
+            }
+        }
+        return (count != 0) ? new Double(sum / count).round(2) : 0
     }
 }

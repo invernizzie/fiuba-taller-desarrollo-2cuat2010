@@ -7,11 +7,11 @@ class BootStrap {
         def singlesTennis = new Discipline(name: "Tenis singles", playersPerTeam: 1, tieable: false)
         def doublesTennis = new Discipline(name: "Tenis dobles", playersPerTeam: 2, tieable: false)
         def disciplines = [football, singlesTennis, doublesTennis]
+        disciplines.each { it.save(failOnError: true) }
+
         def playerPalermo = new Player()
         def playerFederer = new Player()
         def playerNalbandian = new Player()
-        disciplines.each { it.save(failOnError: true) }
-
         def users = []
         users.add(new User(
                 facebookUid: 1,
@@ -36,10 +36,7 @@ class BootStrap {
                 email: 'mpalermo@bocajrs.com.ar',
                 player: playerPalermo
         )
-
         users.add(userPalermo)
-
-
         users.each { it.save(failOnError: true) }
 
         new PlayingField(
@@ -123,33 +120,44 @@ class BootStrap {
                 field: tennisField,
                 discipline: teams[2].discipline).save(failOnError: true)
 
-        new Rating(
+        def ratings = []
+        ratings.add(new Rating(
                 user: userPalermo,
                 player: playerFederer,
                 discipline: football,
-                rating: '5'
-        ).save(failOnError: true)
-
-        new Rating(
+                rating: 5
+        ))
+        ratings.add(new Rating(
                 user: userPalermo,
                 player: playerFederer,
                 discipline: football,
-                rating: '4'
-        ).save(failOnError: true)
-
-        new Rating(
+                rating: 4
+        ))
+        ratings.add(new Rating(
                 user: userPalermo,
                 player: playerFederer,
                 discipline: football,
-                rating: '1'
-        ).save(failOnError: true)
-
-        new Rating(
+                rating: 1
+        ))
+        ratings.add(new Rating(
                 user: userPalermo,
                 player: playerFederer,
                 discipline: singlesTennis,
-                rating: '2'
-        ).save(failOnError: true)
+                rating: 2
+        ))
+        ratings.add(new Rating([
+                player: playerPalermo,
+                discipline: football,
+                user: users[0],
+                rating: 8
+        ]))
+        ratings.add(new Rating([
+                player: playerPalermo,
+                discipline: football,
+                user: users[1],
+                rating: 9
+        ]))
+        ratings.each { it.save(failOnError: true) }
     }
     def destroy = {
     }

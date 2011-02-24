@@ -16,3 +16,22 @@ function replaceQuery(_this) {
     _this.value = "";
     _this.style.color = "black";
 }
+
+function teamAjaxOnClick(_this, teamId) {
+    new Ajax.Updater(
+    {
+        success: 'teamList${team.id}',
+        failure:'message'
+    },
+            _this.href,
+    {
+        asynchronous:true,
+        evalScripts:true,
+        parameters:'team.id=' + teamId,
+        on500: showMessages
+    });
+    return false;
+}
+function showMessages() {
+    $('message').show();
+}
