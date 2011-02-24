@@ -57,7 +57,7 @@ class BootStrap {
 
         def teams = []
         def teamBoca = new Team(
-                name: 'Boca Junios',
+                name: 'Boca Jrs',
                 discipline: football)
         teamBoca.addToAffiliations new Affiliation(player: playerPalermo)
         teams.add(teamBoca)

@@ -20,7 +20,7 @@ function replaceQuery(_this) {
 function teamAjaxOnClick(_this, teamId) {
     new Ajax.Updater(
     {
-        success: 'teamList${team.id}',
+        success: 'teamList'+ teamId,
         failure:'message'
     },
             _this.href,
@@ -32,6 +32,7 @@ function teamAjaxOnClick(_this, teamId) {
     });
     return false;
 }
+
 function showMessages() {
     $('message').show();
 }

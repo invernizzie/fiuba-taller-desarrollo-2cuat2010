@@ -1,4 +1,3 @@
-
 <html>
     <head>
         <title>Welcome to Grails</title>
@@ -51,6 +50,33 @@
 			margin-right:20px;
 		}
         </style>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+        <g:javascript library="slides.min.jquery"/>
+        <script type="text/javascript" language="javascript">
+			$(function(){
+				$('#slides').slides({
+					preload: true,
+					preloadImage: 'images/slides/loading.gif',
+					play: 5000,
+					pause: 2500,
+					hoverPause: true,
+					animationStart: function(){
+						$('.caption').animate({
+							bottom:-35
+						},100);
+					},
+					animationComplete: function(current){
+						$('.caption').animate({
+							bottom:0
+						},200);
+						if (window.console && console.log) {
+							// example return of current slide number
+							console.log(current);
+						};
+					}
+				});
+			});
+		</script>
     </head>
     <body>
         <div id="nav">
