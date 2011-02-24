@@ -7,7 +7,6 @@
         <g:layoutHead />
         <g:javascript library="application" />
         <g:javascript library="prototype" />
-        <%--<fbg:resources />--%>
         <script type="text/javascript">
             function facebookLogin() {
                 FB.getLoginStatus(function(response) {
@@ -17,33 +16,6 @@
                 });
             }
         </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-		<script src="js/slides.min.jquery.js"></script>
-		<script>
-			$(function(){
-				$('#slides').slides({
-					preload: true,
-					preloadImage: 'images/slides/loading.gif',
-					play: 5000,
-					pause: 2500,
-					hoverPause: true,
-					animationStart: function(){
-						$('.caption').animate({
-							bottom:-35
-						},100);
-					},
-					animationComplete: function(current){
-						$('.caption').animate({
-							bottom:0
-						},200);
-						if (window.console && console.log) {
-							// example return of current slide number
-							console.log(current);
-						};
-					}
-				});
-			});
-		</script>
     </head>
     <body>
         <div id="fb-root"></div>
