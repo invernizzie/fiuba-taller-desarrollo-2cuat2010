@@ -314,6 +314,11 @@ th.desc a {
 
 /* ACTION BUTTONS */
 
+.buttonLink {
+    background: #fff url(../images/plus_icon.png) center left no-repeat;
+    padding: 5px 0 3px 20px;
+}
+
 .buttons {
     background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
     border: 1px solid #ccc;
@@ -389,20 +394,27 @@ div .teamList {
 
 .teamList .playerLine {
     text-align: left;
+    position: relative;
+    height: 20px;
+}
+
+.teamList .playerLine .rating {
+    position: absolute;
+    top: -5px;
+    right: 0;
 }
 
 .teamList .teamActions {
     margin-top: 5px;
-    border: 1px solid #ccc;
-    padding: 4px;
+    padding-top: 5px;
+}
+
+.teamActions>div {
+    display: inline;
+    margin-right: 10px;
 }
 
 .teamList .joinTeam {
     text-align: left;
     margin: auto;
-}
-
-.teamList img {
-    margin-bottom: -4px;
-    padding-right: 2px;
 }

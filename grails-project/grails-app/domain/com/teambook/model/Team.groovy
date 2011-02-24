@@ -8,11 +8,6 @@ class Team {
     
     Discipline discipline
 
-    boolean isComplete() {
-        // Should never be greater anyway
-        affiliations.size() >= discipline.playersPerTeam
-    }
-
     String toString() {
         name
     }
@@ -23,12 +18,21 @@ class Team {
         affiliations(minSize: 1, nullable: false)
     }
 
-    static transients = ['complete', 'hasPlayer']
+    static transients = ['complete', 'hasPlayer', 'playersNeeded']
+
+    boolean isComplete() {
+        // Should never be greater anyway
+        affiliations.size() >= discipline.playersPerTeam
+    }
 
     boolean hasPlayer(Player player) {
         def found = affiliations.find {
             it.player.id == player.id
         }
         return found
+    }
+
+    def getPlayersNeeded() {
+        discipline.playersPerTeam - affiliations.size()
     }
 }
