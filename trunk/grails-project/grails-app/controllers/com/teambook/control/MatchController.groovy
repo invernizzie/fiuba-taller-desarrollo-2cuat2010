@@ -9,6 +9,8 @@ class MatchController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+    def facebookGraphService
+
     def index = {
         redirect(action: "list", params: params)
     }
@@ -187,4 +189,19 @@ class MatchController {
             redirect(action: "list")
         }
     }
+
+    def chooseFriends = {
+        if (params.query != null) {
+            if (!flash.friends) {
+                // TODO Merge friends with teambook users
+                flash.friends = facebookGraphService.friends.data
+            }
+            def filteredFriends = flash.friends.findAll { friend ->
+                friend.name.toLowerCase()
+                        .contains(params.query.toLowerCase())
+            }
+            return render(view: 'friendSelection', model: [friends: filteredFriends])
+        }
+    }
+
 }
