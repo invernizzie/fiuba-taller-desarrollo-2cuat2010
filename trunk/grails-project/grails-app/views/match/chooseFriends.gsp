@@ -17,8 +17,12 @@
     });
 
 </script>
-<g:textField name="ajaxSearchText" /><br />
-<div id="chosenFriends"></div>
-<div id="results"></div>
+<div class="friendChooserRoot">
+    <div id="chosenFriends" class="chosenFriends"></div>
+    <div class="friendFilter">
+        <g:textField name="ajaxSearchText" /><br />
+        <div id="results" class="filteredFriends"></div>
+    </div>
+</div>
 </body>
 </html>
