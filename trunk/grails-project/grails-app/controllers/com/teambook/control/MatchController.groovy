@@ -190,16 +190,24 @@ class MatchController {
         }
     }
 
-    def chooseFriends = {
+    def chooseFriends = { }
+
+    def filterFriends = {
         if (params.query != null) {
-            if (!flash.friends) {
+            log.info "Starting friend filtering"
+            def init =  new Date().getTime()
+            if (!/*flash*/session.friends) {
+                log.info "Friends list not in flash, loading from facebook"
                 // TODO Merge friends with teambook users
-                flash.friends = facebookGraphService.friends.data
+                /*flash*/session.friends = facebookGraphService.friends.data
+                log.info "Finished loading friends from facebook in ${new Date().getTime() - init} ms"
             }
-            def filteredFriends = flash.friends.findAll { friend ->
+            //flash.friends = flash.friends
+            def filteredFriends = /*flash*/session.friends.findAll { friend ->
                 friend.name.toLowerCase()
                         .contains(params.query.toLowerCase())
             }
+            log.info "Finished filtering friends in ${new Date().getTime() - init} ms"
             return render(view: 'friendSelection', model: [friends: filteredFriends])
         }
     }

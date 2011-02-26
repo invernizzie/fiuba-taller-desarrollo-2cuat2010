@@ -418,3 +418,32 @@ div .teamList {
     text-align: left;
     margin: auto;
 }
+
+/* FRIEND SELECTION */
+.fbFriend {
+    position: relative;
+    display: inline-block;
+    width: 180px;
+    height: 56px;
+    cursor: pointer;
+}
+
+.fbFriendChosen {
+    background: #ddd;
+}
+
+.fbFriend:hover {
+    background: #CCC;
+}
+
+.fbFriend .fbPic {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+}
+
+.fbFriend .friendData {
+    position: absolute;
+    top: 3px;
+    left: 56px;
+}
