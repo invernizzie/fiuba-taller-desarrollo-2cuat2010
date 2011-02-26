@@ -420,6 +420,28 @@ div .teamList {
 }
 
 /* FRIEND SELECTION */
+
+.friendChooserRoot {
+    display: table;
+}
+
+.chosenFriends {
+	display: inline-block;
+	vertical-align: top;
+    width: 220px;
+}
+
+.friendFilter {
+    display: inline-block;
+    width: 550px;
+    border-left: 1px solid #ccc;
+    padding-left: 10px;
+    height: 100%;
+}
+
+.filteredFriends {
+}
+
 .fbFriend {
     position: relative;
     display: inline-block;
@@ -433,7 +455,7 @@ div .teamList {
 }
 
 .fbFriend:hover {
-    background: #CCC;
+    background: #ccc;
 }
 
 .fbFriend .fbPic {
