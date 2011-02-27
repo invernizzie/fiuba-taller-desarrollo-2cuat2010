@@ -36,3 +36,17 @@ function teamAjaxOnClick(_this, teamId) {
 function showMessages() {
     $('message').show();
 }
+
+var Popup = {
+    open: function(options)
+    {
+        this.options = {
+            url: '#',
+            width: 300,
+            height: 300,
+            windowName: ''
+        }
+        Object.extend(this.options, options || {});
+        return window.open(this.options.url, this.options.windowName, 'width='+this.options.width+',height='+this.options.height);
+    }
+};

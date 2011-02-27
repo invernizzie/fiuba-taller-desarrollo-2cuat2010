@@ -4,6 +4,7 @@ import com.teambook.model.Affiliation
 import com.teambook.model.Match
 import com.teambook.model.Outcome
 import com.teambook.model.exceptions.SameLocalAndAwayTeamException
+import com.teambook.model.Team
 
 class MatchController {
 
@@ -190,7 +191,9 @@ class MatchController {
         }
     }
 
-    def chooseFriends = { }
+    def chooseFriends = {
+        [match: params.matchId ? Match.load(params.matchId) : null, team: Team.load(params.teamId)]
+    }
 
     def filterFriends = {
         if (params.query != null) {

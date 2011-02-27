@@ -1,10 +1,15 @@
 package com.teambook.control
 
 import com.teambook.model.Team
+import com.teambook.model.Match
+import com.teambook.model.Affiliation
+import grails.converters.deep.JSON
 
 class TeamController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+
+    def userService
 
     def index = {
         redirect(action: "list", params: params)
@@ -97,6 +102,31 @@ class TeamController {
         else {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'team.label', default: 'Team'), params.id])}"
             redirect(action: "list")
+        }
+    }
+
+    def addPlayers = {
+        def team = Team.load(params.teamId)
+        def selectedFriends = params.selectedFriends ? JSON.parse(unescape(params.selectedFriends)) : null
+        selectedFriends?.each {
+            team?.addToAffiliations(new Affiliation(
+                    dateCreated: new Date(),
+                    gamesPlayed: 0,
+                    team: team,
+                    player: userService.findOrCreateByFbUid(it.id).player
+            ))
+        }
+        team?.save()
+        if (params.matchId) {
+            return redirect(controller: 'match', action: 'show', id: params.matchId)
+        }
+        return redirect(controller: 'team', action: 'show', id: params.teamId)
+    }
+
+    String unescape(String str) {
+        str = str.substring(1, str.length() - 1)
+        str.replaceAll("\\\\(.)") { x, y ->
+            y
         }
     }
 }

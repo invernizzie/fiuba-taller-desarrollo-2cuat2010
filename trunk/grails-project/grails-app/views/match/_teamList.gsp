@@ -15,15 +15,22 @@
         </div>
     </g:each>
     <div class="teamActions">
-        <g:if test="${!team.complete}">
+    <g:if test="${!team.complete}">
         <div class="playersNeeded">
             <g:message code='team.playersNeeded.short' args="[team.playersNeeded]"/>
         </div>
         <div class="joinTeam">
-            <g:link controller="match" action="teamListJoin" onclick="teamAjaxOnClick(this, ${team.id}); return false;" class="buttonLink">
+            <g:link controller="match" action="teamListJoin" onclick="teamAjaxOnClick(this, ${team.id}); return false;" class="imageLink plusLink">
                 <g:message code="team.join.label" />
             </g:link>
         </div>
+        <div class="addPlayers">
+        <g:if test="${match}">
+            <g:link controller="match" action="chooseFriends" params="[teamId: team.id, matchId: match.id]" class="imageLink friendsLink">
+                <g:message code="team.addPlayers.label" />
+            </g:link>
         </g:if>
+        </div>
+    </g:if>
     </div>
 </div>
