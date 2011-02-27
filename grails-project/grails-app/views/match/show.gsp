@@ -85,10 +85,10 @@
             </div>
             <div class="teamLists">
                 <div id="teamList${matchInstance.localTeam.id}" class="inlineDiv">
-                    <g:render template="teamList" model="[team: matchInstance.localTeam]" />
+                    <g:render template="teamList" model="[team: matchInstance.localTeam, match: matchInstance]" />
                 </div>
                 <div id="teamList${matchInstance.awayTeam.id}" class="inlineDiv">
-                    <g:render template="teamList" model="[team: matchInstance.awayTeam]" />
+                    <g:render template="teamList" model="[team: matchInstance.awayTeam, match: matchInstance]" />
                 </div>
             </div>
             <g:if test="${(matchInstance.owner.id == session.user.id) && matchInstance.scoreToBeRegistered}">

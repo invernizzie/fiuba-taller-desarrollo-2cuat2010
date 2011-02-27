@@ -13,7 +13,8 @@ class UserService {
     def findOrCreateByFbUid(String facebookUid) {
         User user = User.findByFacebookUid(facebookUid)
         if (!user) {
-            def fbProfile = facebookGraphService.getFacebookProfile()
+            def fbProfile = facebookGraphService.api(facebookUid, facebookGraphService.facebookData)
+            //def fbProfile = facebookGraphService.getFacebookProfile()
             if (!fbProfile)
                 throw new NoFacebookSessionException()
             user = new User( [

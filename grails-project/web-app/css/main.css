@@ -314,9 +314,16 @@ th.desc a {
 
 /* ACTION BUTTONS */
 
-.buttonLink {
-    background: #fff url(../images/plus_icon.png) center left no-repeat;
+.imageLink {
     padding: 5px 0 3px 20px;
+}
+
+.plusLink {
+    background: transparent url(../images/plus_icon.png) center left no-repeat;
+}
+
+.friendsLink {
+    background: transparent url(../images/friends_icon.png) center left no-repeat;
 }
 
 .buttons {
@@ -419,16 +426,29 @@ div .teamList {
     margin: auto;
 }
 
+.teamList .addPlayers {
+    text-align: left;
+    margin: auto;
+    margin-left: 5px;
+}
+
 /* FRIEND SELECTION */
 
 .friendChooserRoot {
     display: table;
+    margin-top: 10px;
 }
 
 .chosenFriends {
 	display: inline-block;
 	vertical-align: top;
     width: 220px;
+    font-weight: bold;
+    color: #d00;
+}
+
+.chosenFriends #chosenFriends {
+    margin-bottom: 20px;
 }
 
 .friendFilter {
