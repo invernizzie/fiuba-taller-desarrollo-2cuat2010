@@ -20,7 +20,7 @@
             <g:message code='team.playersNeeded.short' args="[team.playersNeeded]"/>
         </div>
         <div class="joinTeam">
-            <g:link controller="match" action="teamListJoin" onclick="teamAjaxOnClick(this, ${team.id}); return false;" class="imageLink plusLink">
+            <g:link controller="match" action="teamListJoin" onclick="teamAjaxOnClick(this, ${team.id}, ${match?.id ?: ''}); return false;" class="imageLink plusLink">
                 <g:message code="team.join.label" />
             </g:link>
         </div>

@@ -121,7 +121,8 @@ class MatchController {
         affiliationInstance.team.addToAffiliations(affiliationInstance)
 
         if (affiliationInstance.save(flush: true) && affiliationInstance.team.save(flush: true)) {
-            render(template: 'teamList', model: [team: affiliationInstance.team])
+            def match = params.match.id ? Match.load(params.match.id) : null
+            render(template: 'teamList', model: [team: affiliationInstance.team, match: match])
         }
         else {
             render(status: 500, text: message(code: 'errors.internal'))

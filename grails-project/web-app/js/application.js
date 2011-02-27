@@ -17,7 +17,7 @@ function replaceQuery(_this) {
     _this.style.color = "black";
 }
 
-function teamAjaxOnClick(_this, teamId) {
+function teamAjaxOnClick(_this, teamId, matchId) {
     new Ajax.Updater(
     {
         success: 'teamList'+ teamId,
@@ -27,7 +27,7 @@ function teamAjaxOnClick(_this, teamId) {
     {
         asynchronous:true,
         evalScripts:true,
-        parameters:'team.id=' + teamId,
+        parameters:'team.id=' + teamId + '&match.id=' + matchId,
         on500: showMessages
     });
     return false;
