@@ -24,7 +24,7 @@
                     	<tr class="prop">
                             <td valign="top" class="name"><g:message code="player.user.label" default="User" /></td>
                             
-                            <td colspan="2" valign="top" class="value"><g:link controller="user" action="show" id="${playerInstance?.user?.id}">${playerInstance?.user?.encodeAsHTML()}</g:link></td>
+                             <td colspan="2" valign="top" class="value">${fieldValue(bean: playerInstance.user, field: "name")}</td>
                             
                         </tr>
                     
@@ -34,6 +34,29 @@
                             <td colspan="2" valign="top" class="value">${fieldValue(bean: playerInstance, field: "id")}</td>
                             
                         </tr>
+                        
+                          <tr class="prop">
+                            <td valign="top" class="name"><g:message code="user.username.label" default="Username" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: playerInstance.user, field: "username")}</td>
+                            
+                        </tr>
+                        
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="user.email.label" default="Email" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: playerInstance.user, field: "email")}</td>
+                            
+                        </tr>
+                        
+                          
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="user.birthday.label" default="Birthday" /></td>
+                            
+                            <td valign="top" class="value"><g:formatDate date="${playerInstance.user?.birthday}" /></td>
+                            
+                        </tr>
+                    
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="player.affiliations.label" default="Affiliations" /></td>
@@ -47,7 +70,7 @@
                             </td>
                             
                         </tr>
-                    
+                      
                         
                          <tr class="prop">
                             <td valign="top" class="name"><g:message code="player.averageRating.label" default="averageRatings" /></td>
