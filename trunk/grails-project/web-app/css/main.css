@@ -493,3 +493,13 @@ div .teamList {
     top: 3px;
     left: 56px;
 }
+
+.playingFieldPhoto {
+	border: 2px solid #ccc;
+	float:right;
+	margin: 15px 15px 15px 15px;
+}
+
+.playingFieldInfo {
+	float:left;
+}

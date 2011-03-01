@@ -24,21 +24,21 @@
                     	<tr class="prop">
                             <td valign="top" class="name"><g:message code="player.user.label" default="User" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="user" action="show" id="${playerInstance?.user?.id}">${playerInstance?.user?.encodeAsHTML()}</g:link></td>
+                            <td colspan="2" valign="top" class="value"><g:link controller="user" action="show" id="${playerInstance?.user?.id}">${playerInstance?.user?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="player.id.label" default="Id" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: playerInstance, field: "id")}</td>
+                            <td colspan="2" valign="top" class="value">${fieldValue(bean: playerInstance, field: "id")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="player.affiliations.label" default="Affiliations" /></td>
                             
-                            <td valign="top" style="text-align: left;" class="value">
+                            <td colspan="2" valign="top" style="text-align: left;" class="value">
                                 <ul>
                                 <g:each in="${playerInstance.affiliations}" var="a">
                                     <li><g:link controller="affiliation" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
@@ -55,7 +55,15 @@
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
                                 <g:each in="${playerInstance.getRatingsByDiscipline()}" var="r">
-                                    <li> ${r.key+" --> "+r.value} </li>
+                                    <li>${r.key}                                     </li>
+                                </g:each>
+                                </ul>
+                            </td>
+                            
+                            <td valign="top" style="text-align: left;" class="value">
+                                <ul>
+                                <g:each in="${playerInstance.getRatingsByDiscipline()}" var="r">
+                                   ${r.value}
                                 </g:each>
                                 </ul>
                             </td>
