@@ -50,3 +50,14 @@ var Popup = {
         return window.open(this.options.url, this.options.windowName, 'width='+this.options.width+',height='+this.options.height);
     }
 };
+
+function highlightStar(_this) {
+    var trimPosition = _this.src.lastIndexOf("/");
+    _this.src = _this.src.substring(0, trimPosition + 1) + 'star_icon_highlight.png';
+}
+
+function dimStar(_this) {
+    var trimPosition = _this.src.lastIndexOf("/");
+    var filename = 'star_icon' + (_this.alt == "*" ? '' : '_gray') + '.png';
+    _this.src = _this.src.substring(0, trimPosition + 1) + filename;
+}

@@ -1,8 +1,8 @@
 package com.teambook.service
 
 import com.teambook.exceptions.NoFacebookSessionException
-import com.teambook.model.User
 import com.teambook.model.Player
+import com.teambook.model.User
 
 class UserService {
 
@@ -25,7 +25,7 @@ class UserService {
                     email: fbProfile.email ?: 'none@none.com',
                     player: new Player()
             ])
-            user.save()
+            user.save(flush: true)
         }
         user
     }

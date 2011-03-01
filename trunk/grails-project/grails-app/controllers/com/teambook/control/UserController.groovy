@@ -1,22 +1,18 @@
 package com.teambook.control
 
 import com.teambook.model.User
-import com.teambook.model.Player
-import com.teambook.service.UserService
-
-import com.teambook.exceptions.NoFacebookSessionException
-import grails.converters.JSON
-
 
 class UserController {
+
+    // Required by facebookGraphService
+    def facebookGraphService
+    def userService
 
 	//Integration Facebook Methods.
 	def fbLogin = {
         if (!session.user) {
             if (session.facebook.uid) {
-	            def userService=new UserService()
-			//    session.user = userService.findOrCreateByFbUid(session.facebook.uid)
-        		session.user = findOrCreateByFbUid(session.facebook.uid)
+			    session.user = userService.findOrCreateByFbUid(session.facebook.uid)
             } else {
                 return params
             }
@@ -30,31 +26,6 @@ class UserController {
         session.invalidate()
         redirect(uri: '')
     }
-    
-    // Required by facebookGraphService
-    def facebookGraphService
-    
-    //TODO remove and use method from UserService
-    def findOrCreateByFbUid(String facebookUid) {
-        User user = User.findByFacebookUid(facebookUid)
-        if (!user) {
-            def fbProfile = facebookGraphService.getFacebookProfile()
-            if (!fbProfile)
-                throw new NoFacebookSessionException()
-            user = new User( [
-                    facebookUid: facebookUid,
-                    username: 'username',
-                    name: fbProfile.name,
-                    birthday: fbProfile.birthday,
-                    email: fbProfile.email ?: 'none@none.com',
-                    player: new Player()
-            ])
-            user.save()
-        }
-        user
-    }
-
-
 
 	//END Integration Facebook Methods.
 
