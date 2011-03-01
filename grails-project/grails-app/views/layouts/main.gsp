@@ -1,3 +1,4 @@
+<%@ page import="org.codehaus.groovy.grails.commons.ConfigurationHolder" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
     <head>
@@ -21,7 +22,7 @@
         <div id="fb-root"></div>
         <script src="http://connect.facebook.net/en_US/all.js"></script>
         <script>
-            FB.init({appId: '141844382523320', cookie: true, xfbml: true});
+            FB.init({appId: '${ConfigurationHolder.config.facebook.applicationId}', cookie: true, xfbml: true});
         </script>
         <div class="content">
             <g:render template="/layouts/header" />

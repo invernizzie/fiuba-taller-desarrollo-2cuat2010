@@ -1,4 +1,4 @@
-<%@ page import="com.teambook.model.Match" %>
+<%@ page import="org.codehaus.groovy.grails.commons.ConfigurationHolder; com.teambook.model.Match" %>
 <%@ page import="com.teambook.model.Outcome" %>
 <html>
     <head>
@@ -69,17 +69,6 @@
                         <td valign="top" class="name"><g:message code="match.field.label" default="Field" /></td>
                         <td valign="top" class="value" colspan="3"><g:link controller="playingField" action="show" id="${matchInstance?.field?.id}">${matchInstance?.field?.encodeAsHTML()}</g:link></td>
                     </tr>
-                    <%--
-                    <tr class="prop">
-                        <td valign="top" class="name"><g:message code="match.localTeam.label" default="Local Team" /></td>
-                        <td valign="top" class="value"><g:link controller="team" action="show" id="${matchInstance?.localTeam?.id}">${matchInstance?.localTeam?.encodeAsHTML()}</g:link></td>
-                    </tr>
-
-                    <tr class="prop">
-                        <td valign="top" class="name"><g:message code="match.awayTeam.label" default="Away Team" /></td>
-                        <td valign="top" class="value"><g:link controller="team" action="show" id="${matchInstance?.awayTeam?.id}">${matchInstance?.awayTeam?.encodeAsHTML()}</g:link></td>
-                    </tr>
-                    --%>
                     </tbody>
                 </table>
             </div>
@@ -100,6 +89,7 @@
                 </g:form>
             </div>
             </g:if>
+            <script src="http://connect.facebook.net/en_US/all.js#appId=${ConfigurationHolder.config.facebook.applicationId}&amp;xfbml=1"></script><fb:comments numposts="10" width="425" publish_feed="true"></fb:comments>
         </div>
     </body>
 </html>
