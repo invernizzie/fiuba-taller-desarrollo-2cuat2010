@@ -99,4 +99,5 @@ class PlayerController {
             redirect(action: "list")
         }
     }
+    
 }

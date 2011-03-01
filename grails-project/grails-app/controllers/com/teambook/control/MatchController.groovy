@@ -1,16 +1,14 @@
 package com.teambook.control
 
-import com.teambook.model.Affiliation
-import com.teambook.model.Match
-import com.teambook.model.Outcome
 import com.teambook.model.exceptions.SameLocalAndAwayTeamException
-import com.teambook.model.Team
+import com.teambook.model.*
 
 class MatchController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def facebookGraphService
+    def ratingService
 
     def index = {
         redirect(action: "list", params: params)
@@ -127,6 +125,21 @@ class MatchController {
         else {
             render(status: 500, text: message(code: 'errors.internal'))
         }
+    }
+
+    def ratePlayer = {
+        // FIXME Desde aca hasta player.save(), esto debe ir en un service
+        // TODO Validaciones
+        def player = Player.load(params.player.id)
+        def discipline = Discipline.load(params.discipline.id)
+        def newRating = ratingService.addOrUpdate(player, session.user, discipline, Long.valueOf(params.rating))
+        if (!newRating) {
+            return render(status: 500, text: message(code: 'errors.internal'))
+        }
+        player.addToRatings(newRating)
+        player.save()
+        // TODO Esto es super ad-hoc para usar este action en la lista de jugadores de un equipo
+        render(controller: 'match', template: 'teamList', model: [team: Team.load(params.team.id), match: Match.load(params.match.id)])
     }
 
     def edit = {

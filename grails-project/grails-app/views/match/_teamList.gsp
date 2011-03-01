@@ -6,21 +6,27 @@
         <div class="playerLine">
             <g:link controller="player" action="show" params="[id: affiliation.player.id]">
                 ${affiliation.player.user}
-                <div class="rating">
-                    <g:each in="${(1..affiliation.player.getRatingForDiscipline(team.discipline) / 2)}">
-                        <img src="${request.contextPath}/images/star_icon.png" alt="*" />
-                    </g:each>
-                </div>
             </g:link>
+            <div class="rating">
+            <g:set var="rating" value="${affiliation.player.getRatingForDiscipline(team.discipline)}" />
+            <g:each in="${1..5}" >
+                <g:set var="i" value="${it}" />
+                <g:link controller="match" action="ratePlayer"
+                        params="['discipline.id': team.discipline.id, 'player.id': affiliation.player.id, rating: i*2]"
+                        title="${i}/5" onclick="return teamAjaxOnClick(this, ${team.id}, ${match?.id ?: ''});">
+                    <img src="${resource(dir: 'images', file: 'star_icon' + (i > (rating / 2) ? '_gray' : '') + '.png')}" onmouseover="highlightStar(this);" onmouseout="dimStar(this);" alt="${i > rating / 2 ? '' : '*'}" />
+                </g:link>
+            </g:each>
+        </div>
         </div>
     </g:each>
     <div class="teamActions">
-    <g:if test="${!team.complete}">
+        <g:if test="${!team.complete}">
         <div class="playersNeeded">
-            <g:message code='team.playersNeeded.short' args="[team.playersNeeded]"/>
+            <g:message code='team.playersNeeded.short' args="${[team.playersNeeded, (team.playersNeeded > 1 ? 'n' : '')]}"/>
         </div>
         <div class="joinTeam">
-            <g:link controller="match" action="teamListJoin" onclick="teamAjaxOnClick(this, ${team.id}, ${match?.id ?: ''}); return false;" class="imageLink plusLink">
+            <g:link controller="match" action="teamListJoin" onclick="return teamAjaxOnClick(this, ${team.id}, ${match?.id ?: ''});" class="imageLink plusLink">
                 <g:message code="team.join.label" />
             </g:link>
         </div>
@@ -30,7 +36,7 @@
                 <g:message code="team.addPlayers.label" />
             </g:link>
         </g:if>
-        </div>
+    </div>
     </g:if>
     </div>
 </div>

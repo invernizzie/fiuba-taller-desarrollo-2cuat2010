@@ -29,6 +29,10 @@ a:link, a:visited, a:hover {
     text-decoration: none;
 }
 
+a img {
+    border-width: 0;
+}
+
 h1 {
     color: #d00;
     font-weight: normal;

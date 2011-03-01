@@ -127,24 +127,6 @@ class BootStrap {
                 discipline: football,
                 rating: 5
         ))
-        ratings.add(new Rating(
-                user: userPalermo,
-                player: playerFederer,
-                discipline: football,
-                rating: 4
-        ))
-        ratings.add(new Rating(
-                user: userPalermo,
-                player: playerFederer,
-                discipline: football,
-                rating: 1
-        ))
-        ratings.add(new Rating(
-                user: userPalermo,
-                player: playerFederer,
-                discipline: singlesTennis,
-                rating: 2
-        ))
         ratings.add(new Rating([
                 player: playerPalermo,
                 discipline: football,
