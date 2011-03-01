@@ -495,11 +495,21 @@ div .teamList {
 }
 
 .playingFieldPhoto {
-	border: 2px solid #ccc;
+/*	border: 2px solid #ccc;*/
 	float:right;
 	margin: 15px 15px 15px 15px;
 }
 
 .playingFieldInfo {
 	float:left;
+}
+
+.playerInfo {
+	float:left;
+}
+
+.playerPhoto {
+	/*border: 2px solid #ccc;*/
+	float:right;
+	margin: 75px 15px 15px 15px;
 }
