@@ -12,10 +12,9 @@
         </g:else>
     </div>
 
-    %{--TODO Mover al right--}%
     <div class="headerSearch">
         <g:form controller="match" action="list">
-            <g:textField name="matchName" value="${message(code: 'header.search.label')}" onfocus="replaceQuery(this)"/>
+            <g:textField name="matchName" placeholder="${message(code: 'header.search.label')}"/>
         </g:form>
     </div>
 </div>
