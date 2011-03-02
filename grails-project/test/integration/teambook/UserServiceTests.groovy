@@ -1,14 +1,11 @@
-package com.teambook.service
+package teambook
 
-import grails.test.GrailsUnitTestCase
+class UserServiceTests extends GroovyTestCase {
 
-class UserServiceTests extends GrailsUnitTestCase {
-
-    UserService userService
+    def userService
 
     protected void setUp() {
         super.setUp()
-        userService = new UserService()
     }
 
     protected void tearDown() {
@@ -21,6 +18,6 @@ class UserServiceTests extends GrailsUnitTestCase {
         assert estebanProfile.name == "Esteban Invernizzi"
         assert estebanProfile.first_name == "Esteban"
         assert estebanProfile.last_name == "Invernizzi"
-        assert estebanProfile.gender == "Male"
+        assert estebanProfile.gender == "male"
     }
 }

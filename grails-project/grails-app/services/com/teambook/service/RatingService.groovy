@@ -9,8 +9,8 @@ class RatingService {
 
     static transactional = true
 
-    def addOrUpdate(Player ratedPlayer, User ratingUser, Discipline disciplineChosen, Number rating) {
-        def existingRating = Rating.createCriteria().get {
+    Rating addOrUpdate(Player ratedPlayer, User ratingUser, Discipline disciplineChosen, Number rating) {
+        Rating existingRating = Rating.createCriteria().get {
             player { eq("id", ratedPlayer.id) }
             user { eq("id", ratingUser.id) }
             discipline { eq("id", disciplineChosen.id) }

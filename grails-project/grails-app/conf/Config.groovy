@@ -13,6 +13,8 @@
 facebook.applicationSecret= 'b7190620f337ce312b5f8f9ef692b1f7'
 facebook.applicationId= '141844382523320'
 
+loadFullData = true
+
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
