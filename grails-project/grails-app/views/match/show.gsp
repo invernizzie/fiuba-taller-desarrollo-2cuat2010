@@ -8,11 +8,6 @@
         <title><g:message code="match.label"/>: ${matchInstance.name} - Teambook</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
-            <span class="menuButton"><g:link class="list" action="list"><g:message code="match.list.label" /></g:link></span>
-            <span class="menuButton"><g:link class="create" action="create"><g:message code="match.organize.label" /></g:link></span>
-        </div>
         <div class="body">
             <h1>${matchInstance.name}</h1>
             <div class="message" ${(!flash.message) ? 'style="display: none;"' : ''} id="message">${flash.message}</div>

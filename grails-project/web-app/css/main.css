@@ -286,6 +286,7 @@ th.desc a {
     width: 15%;
     white-space: nowrap;
 }
+
 .prop .value {
     padding-top: 12px;
     text-align: left;
@@ -478,7 +479,8 @@ div .teamList {
 .playingFieldPhoto {
 /*	border: 2px solid #ccc;*/
 	float:right;
-	margin: 15px 15px 15px 15px;
+    margin-top:20px;
+	/*margin: 15px 15px 15px 15px;*/
 }
 
 .playingFieldInfo {
