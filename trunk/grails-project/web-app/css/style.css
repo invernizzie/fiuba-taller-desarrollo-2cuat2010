@@ -16,6 +16,7 @@ p {
     line-height: 17px;
     margin: 11px 0 10px 0;
     padding: 0px;
+    text-align: justify;
 }
 
 h2 {
@@ -135,7 +136,6 @@ blockquote {
 
 #content {
     width: 100%;
-    margin-top: 30px;
 }
 
 #content h2 {
@@ -155,17 +155,15 @@ blockquote {
 }
 
 #left {
-    width: 390px;
+    width: 65%;
     float: left;
-    display: block;
-    margin-left: 20px;
     display: inline;
 }
 
 /**** Sidebar ***/
 
 #right {
-    width: 315px;
+    width: 30%;
     float: right;
     display: block;
     margin-top: 10px;
