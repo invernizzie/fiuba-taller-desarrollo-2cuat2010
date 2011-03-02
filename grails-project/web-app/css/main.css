@@ -24,7 +24,7 @@ div.content {
 }
 
 a:link, a:visited, a:hover {
-    color: #d00;
+    color: #93B300;
     font-weight: bold;
     text-decoration: none;
 }
@@ -34,9 +34,9 @@ a img {
 }
 
 h1 {
-    color: #d00;
+    color: #93B300;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 24px;
     text-shadow: 0 1px #ddd;
     margin: .8em 0 .3em 0;
 }
@@ -87,9 +87,6 @@ div .matchOutcome {
 
 /* HEADER */
 
-.header {
-    padding-top: 10px;
-}
 
 .layoutHeader {
     font-size: 40px;
@@ -101,13 +98,12 @@ div .matchOutcome {
 }
 
 .headerSearch {
-    float: right;
     padding-top: 15px;
-    padding-right: 20px;
+    float: right;
 }
 
 .headerFBConnect {
-    padding-right: 20px;
+    padding-top: 10px;
     text-align: right;
 }
 
