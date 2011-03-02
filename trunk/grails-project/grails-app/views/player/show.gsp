@@ -8,10 +8,6 @@
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
-            <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
-        </div>
         <div class="body">
         	<div class="playerInfo">
 		        <h1><g:message code="default.show.label" args="[entityName]" /></h1>
@@ -21,7 +17,6 @@
 		        <div class="dialog">
 		            <table>
 		                <tbody>
-		                
 		                	<tr class="prop">
 		                        <td valign="top" class="name"><g:message code="player.user.label" default="User" /></td>
 		                        
