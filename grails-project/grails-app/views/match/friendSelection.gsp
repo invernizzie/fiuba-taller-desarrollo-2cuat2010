@@ -1,3 +1,4 @@
+<%-- por que no hice un template?? --%>
 <%@ page import="grails.converters.JSON" %>
 <html>
 <body>
