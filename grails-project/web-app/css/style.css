@@ -234,6 +234,13 @@ blockquote {
     background: url(../images/bg_t.gif) no-repeat;
     background-color: #fff;
     font-weight: bold;
+    
+}
+
+#fotoDeportes {
+    float:right;
+    margin-bottom:10px;
+
 }
 
 /**** Clear Div ***/
