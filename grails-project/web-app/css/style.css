@@ -9,11 +9,11 @@ body {
     background: url(../images/top_bg.gif);
     background-repeat: repeat-x;
     font-family: Verdana, Arial, sans-serif;
-    font-size: .6em;
+    font-size: 0.8em;
 }
 
 p {
-    line-height: 17px;
+    line-height: 1.5em;
     margin: 11px 0 10px 0;
     padding: 0px;
     text-align: justify;
@@ -170,7 +170,7 @@ blockquote {
 }
 
 #right .box {
-    width: 24em; /*280px*/
+    width: 230px;
     background: #F6F9FB;
     border: 1px solid #E1E1E1;
     padding: 10px 10px 15px 10px;
@@ -232,12 +232,12 @@ blockquote {
     background: url(../images/bg_t.gif) no-repeat;
     background-color: #fff;
     font-weight: bold;
-    
+
 }
 
 #fotoDeportes {
-    float:right;
-    margin-bottom:10px;
+    float: right;
+    margin-bottom: 10px;
 
 }
 

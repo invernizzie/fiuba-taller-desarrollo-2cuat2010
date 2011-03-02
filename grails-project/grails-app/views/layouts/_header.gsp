@@ -3,8 +3,8 @@
 <div id="menu">
     <%-- TODO: Si esta loggeado mostrar su nombre y no este boton --%>
     <div class="headerFBConnect">
-        <g:if test="${session.user}">
-            ${session.user.name} | <g:link controller="user" action="logout"><g:message code="auth.logout"/></g:link>
+        <g:if test="${session.user}"> 
+            <g:link style="color: white; font-weight: normal;" controller="player" action="show" params="[id: session.user.id]">${session.user.name}</g:link> | <g:link controller="user" action="logout"><g:message code="auth.logout"/></g:link>
         </g:if><g:else>
             <fb:login-button perms="email,publish_stream" onlogin="facebookLogin();" size="normal">
                 <g:message code="auth.login.facebook"/>
