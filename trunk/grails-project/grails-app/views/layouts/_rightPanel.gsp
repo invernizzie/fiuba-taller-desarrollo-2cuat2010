@@ -5,6 +5,14 @@
     <li><g:link controller="player" action="list"><g:message code="player.list.label"/></g:link></li>
     <li><g:link controller="match" action="create"><g:message code="match.organize.label"/></g:link></li>
 </ul>
+
+
+<div id="fotoDeportes">
+    <img src="${createLinkTo(dir:'images', file:'fotoChica.jpg')}" />
+</div>
+
+
+
 <div class="box">
     <h2 style="margin-top:17px">Incoming matches</h2>
     <ul>
