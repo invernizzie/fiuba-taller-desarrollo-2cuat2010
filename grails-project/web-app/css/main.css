@@ -372,12 +372,17 @@ div .inlineDiv {
 
 div .teamList {
     display: inline-block;
-    margin: 10px 5px 0 5px;
+    margin: 10px 0;
     padding: 0 10px 10px 10px;
     border: 1px solid #ccc;
-    min-width: 280px;
+    min-width: 237px;
     text-align: center;
     vertical-align: top;
+    min-height: 102px;
+}
+
+div .facebookCommentStyle{
+    border: 1px solid #ccc;
 }
 
 .teamList .teamName {
