@@ -89,7 +89,7 @@
                 </g:form>
             </div>
             </g:if>
-            <script src="http://connect.facebook.net/en_US/all.js#appId=${ConfigurationHolder.config.facebook.applicationId}&amp;xfbml=1"></script><fb:comments numposts="10" width="425" publish_feed="true"></fb:comments>
+            <script src="http://connect.facebook.net/en_US/all.js#appId=${ConfigurationHolder.config.facebook.applicationId}&amp;xfbml=1"></script><fb:comments href="www.teambook.com${createLink(controller: 'match', action: 'show', id: matchInstance.id)}" numposts="10" width="600" height="auto" publish_feed="true"></fb:comments>
         </div>
     </body>
 </html>
