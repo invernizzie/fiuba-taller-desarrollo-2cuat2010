@@ -8,6 +8,6 @@ class MatchService {
 
     def findIncomingMatches(maxResults) {
         def now = new Date();
-        Match.findByStartingTimeGreaterThanEquals(now, [max: maxResults, sort: "startingTime", order: "asc"])
+        Match.findAllByStartingTimeGreaterThanEquals(now, [max: maxResults, sort: "startingTime", order: "asc"])
     }
 }
