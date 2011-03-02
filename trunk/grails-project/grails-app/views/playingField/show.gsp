@@ -17,7 +17,7 @@
         <table>
             <tbody>
 
-              <tr class="prop">
+            <tr class="prop">
                 <td colspan="2" style="text-align:center;">
                     <img width="300" height="240" src="${createLinkTo(dir: 'images/playingFields', file: playingFieldInstance.photoPath)}"/>
                 </td>
@@ -62,8 +62,6 @@
                     <td valign="top" class="value">${fieldValue(bean: playingFieldInstance, field: "website")}</td>
                 </tr>
             </g:if>
-
-
 
             </tbody>
         </table>

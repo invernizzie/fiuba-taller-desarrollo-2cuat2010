@@ -1,3 +1,4 @@
+<img id="logo" src="${createLinkTo(dir:'images', file:'logo_300.png')}" />
 <h2><g:link uri="/" title="Back to main page"><g:message code="header.home"/></g:link></h2>
 
 <div id="menu">

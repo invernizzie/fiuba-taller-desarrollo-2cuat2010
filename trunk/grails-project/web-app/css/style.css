@@ -75,8 +75,13 @@ blockquote {
     top: 33px;
     display: block;
     float: left;
-    background: url(../images/bg_t.gif) no-repeat;
     padding-left: 10px;
+}
+
+#top #logo {
+    float: left;
+    padding-top: 10px;
+    height: 60px;
 }
 
 #top h2 a {
