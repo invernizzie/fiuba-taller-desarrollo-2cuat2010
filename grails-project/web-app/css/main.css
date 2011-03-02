@@ -11,12 +11,6 @@ html * {
     right: 0;
 }
 
-body {
-    background: #fff;
-    color: #333;
-    font: 11px verdana, arial, helvetica, sans-serif;
-}
-
 div.content {
     width: 940px;
     display: block;
@@ -363,15 +357,6 @@ th.desc a {
 .buttons input.filter {
     background: transparent url(../images/skin/database_table.png) 5px 50% no-repeat;
     padding-left: 28px;
-}
-
-#footer {
-font-size: 0.75em;
-font-style: italic;
-padding: 2em 1em 2em 1em;
-margin-bottom: 1em;
-margin-top: 1em;
-clear: both;
 }
 
 /* MATCH */

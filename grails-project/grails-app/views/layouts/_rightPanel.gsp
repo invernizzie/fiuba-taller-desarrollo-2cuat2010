@@ -11,10 +11,11 @@
 <div class="box">
     <h2 style="margin-top:17px">Incoming matches</h2>
     <ul>
-        <li><a href="main.gsp#">Match 1</a> <i>DATE</i></li>
-        <li><a href="main.gsp#">Match 2</a> <i>01 Des 06</i></li>
-        <li><a href="main.gsp#">Match 3</a> <i>01 Des 06</i></li>
-        <li><a href="main.gsp#">Match 4</a> <i>01 Des 06</i></li>
-        <li><a href="main.gsp#">Match 5</a> <i>01 Des 06</i></li>
+        <g:each in="${incomingMatches}" var="match">
+            <li>
+                <g:link controller="match" action="show" params="[id: match.id]">${match.name}</g:link>
+                <i>${match.startingTime}</i>
+            </li>
+        </g:each>
     </ul>
 </div>
