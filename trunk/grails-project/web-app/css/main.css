@@ -62,6 +62,7 @@ input:focus, select:focus, textarea:focus {
 .body {
     float: left;
     margin: 0 15px 10px 15px;
+    width: 100%;
 }
 
 .bigHeading {
@@ -482,10 +483,7 @@ div .facebookCommentStyle{
 }
 
 .playingFieldPhoto {
-/*	border: 2px solid #ccc;*/
-	float:right;
-    margin-top:20px;
-	/*margin: 15px 15px 15px 15px;*/
+
 }
 
 .playingFieldInfo {

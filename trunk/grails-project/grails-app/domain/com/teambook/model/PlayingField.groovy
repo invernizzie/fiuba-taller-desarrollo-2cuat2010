@@ -7,6 +7,8 @@ class PlayingField {
     String city
     String state
     String country
+    String telephoneNumber
+    String website
     List<Discipline> availableDisciplines
 
 
@@ -19,10 +21,12 @@ class PlayingField {
     static constraints = {
         name(blank: false)
         address(blank: false)
+
         city(nullable: true)
         state(nullable: true)
         country(nullable: true)
 		photoPath(nullable: true)
-
+        telephoneNumber(nullable: true)
+        website(nullable: true)
     }
 }
