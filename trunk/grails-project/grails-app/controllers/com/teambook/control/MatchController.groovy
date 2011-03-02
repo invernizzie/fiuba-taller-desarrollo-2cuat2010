@@ -9,6 +9,7 @@ class MatchController {
 
     def facebookGraphService
     def ratingService
+    def userService
 
     def index = {
         redirect(action: "list", params: params)
@@ -206,27 +207,49 @@ class MatchController {
     }
 
     def chooseFriends = {
+        loadFriendsFromFacebookIfNeeded()
         [match: params.matchId ? Match.load(params.matchId) : null, team: Team.load(params.teamId)]
     }
 
     def filterFriends = {
         if (params.query != null) {
             log.info "Starting friend filtering"
-            def init =  new Date().getTime()
-            if (!/*flash*/session.friends) {
-                log.info "Friends list not in flash, loading from facebook"
-                // TODO Merge friends with teambook users
-                /*flash*/session.friends = facebookGraphService.friends.data
-                log.info "Finished loading friends from facebook in ${new Date().getTime() - init} ms"
-            }
+            loadFriendsFromFacebookIfNeeded()
             //flash.friends = flash.friends
+            def init = new Date().time
             def filteredFriends = /*flash*/session.friends.findAll { friend ->
                 friend.name.toLowerCase()
                         .contains(params.query.toLowerCase())
             }
+            /* Entiendo que lo siguiente no es legible pero lo hice
+             * en dos minutos, amo Grails y sobre todoGroovy... lo explico */
+            // Quiero todos los usuarios cuyo nombre coincida con la busqueda
+            def notFriendUsers = User.findAllByNameIlike("%${params.query}%")
+                    // De esos, solo me quedo con los que no estan entre sus amigos, para no duplicar
+                    .findAll { user ->
+                        ! filteredFriends.find { friend ->
+                            friend.id == user.facebookUid
+                        }
+                    // Creo por cada uno un objeto que contenga lo que necesita la vista: id y name
+                    }.collect { user ->
+                        [id: user.facebookUid, name: user.name]
+                    }
+            filteredFriends.addAll notFriendUsers
+
             log.info "Finished filtering friends in ${new Date().getTime() - init} ms"
             return render(view: 'friendSelection', model: [friends: filteredFriends])
         }
+    }
+
+    private def loadFriendsFromFacebookIfNeeded() {
+        def init = new Date().time
+        if (!/*flash*/ session.friends) {
+            log.info "Friends list not in flash, loading from facebook"
+            // TODO Merge friends with teambook users
+            /*flash*/ session.friends = facebookGraphService.friends.data
+            log.info "Finished loading friends from facebook in ${new Date().getTime() - init} ms"
+        }
+        return init
     }
 
 }

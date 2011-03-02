@@ -14,14 +14,14 @@ class BootStrap {
         def playerNalbandian = new Player()
         def users = []
         users.add(new User(
-                facebookUid: 1,
+                facebookUid: '64760994940',
                 username: 'user1',
                 name: 'Roger Federer',
                 birthday: Date.parse('d-M-yyyy', '20-7-1975'),
                 email: 'roger@email.com',
                 player: playerFederer))
         users.add(new User(
-                facebookUid: 2,
+                facebookUid: '1727091423',
                 username: 'user2',
                 name: 'David Nalbandian',
                 birthday: Date.parse('d-M-yyyy', '12-4-1983'),
@@ -29,7 +29,7 @@ class BootStrap {
                 player: playerNalbandian))
 
         def userPalermo = new User(
-                facebookUid: 3,
+                facebookUid: '154804461414',
                 username: 'user3',
                 name: 'Martin Palermo',
                 birthday: Date.parse('d-M-yyyy', '7-11-1973'),
