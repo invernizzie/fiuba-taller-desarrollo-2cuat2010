@@ -1,5 +1,2 @@
-<div id="footer">
-<hr />
-&copy; <g:thisYear /> Teambook.
-</div>
+<p>&copy; <g:thisYear /> Teambook.</p>
 
