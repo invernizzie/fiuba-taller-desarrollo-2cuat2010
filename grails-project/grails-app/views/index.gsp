@@ -5,34 +5,30 @@
 </head>
 <body>
 <link rel="stylesheet" type="text/css" href="css/slides.css" media="screen"/>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 <g:javascript library="slides.min.jquery"/>
 
 <script type="text/javascript" language="javascript">
-    $(function() {
-        $('#slides').slides({
-            preload: true,
-            preloadImage: 'images/slides/loading.gif',
-            play: 5000,
-            pause: 2500,
-            hoverPause: true,
-            animationStart: function() {
-                $('.caption').animate({
-                    bottom:-35
-                }, 100);
-            },
-            animationComplete: function(current) {
-                $('.caption').animate({
-                    bottom:0
-                }, 200);
-                if (window.console && console.log) {
-                    // example return of current slide number
-                    console.log(current);
+    (function($) {
+        $(function() {
+            $('#slides').slides({
+                preload: true,
+                preloadImage: 'images/slides/loading.gif',
+                play: 5000,
+                pause: 2500,
+                hoverPause: true,
+                animationStart: function() {
+                    $('.caption').animate({
+                        bottom:-35
+                    }, 100);
+                },
+                animationComplete: function(current) {
+                    $('.caption').animate({
+                        bottom:0
+                    }, 200);
                 }
-                ;
-            }
+            });
         });
-    });
+    })(jQuery);
 </script>
 <h1>Welcome to Teambook</h1>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

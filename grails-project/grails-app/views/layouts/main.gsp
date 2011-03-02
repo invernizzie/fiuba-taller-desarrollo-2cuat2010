@@ -1,6 +1,6 @@
 <%@ page import="org.codehaus.groovy.grails.commons.ConfigurationHolder" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" lang="en">
 <head>
@@ -15,10 +15,13 @@
 
     <link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon"/>
 
-    %{--Very important to include jquery before prototype!!--}%
-    <g:javascript library="slides.min.jquery"/>
     <g:javascript library="application"/>
     <g:javascript library="prototype"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+    <g:javascript>
+        $.noConflict();
+        // Now jQuery must be accessed with 'jQuery' instead of '$'.
+    </g:javascript>
 
     <script type="text/javascript">
         function facebookLogin() {
