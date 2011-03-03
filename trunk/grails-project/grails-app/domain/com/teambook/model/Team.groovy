@@ -3,10 +3,12 @@ package com.teambook.model
 class Team {
 
     String name
-	
-	static hasMany = [affiliations: Affiliation]
-    
+
     Discipline discipline
+
+    SortedSet affiliations
+    
+    static hasMany = [affiliations: Affiliation]
 
     String toString() {
         name
