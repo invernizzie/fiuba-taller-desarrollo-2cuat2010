@@ -15,37 +15,32 @@
 		        <div class="message">${flash.message}</div>
 		        </g:if>
 		        <div class="dialog">
+
+                    <div class="playerDialog">
 		            <table>
 		                <tbody>
 		                	<tr class="prop">
 		                        <td valign="top" class="name"><g:message code="player.user.label" default="User" /></td>
 		                        
-		                         <td colspan="2" valign="top" class="value">${fieldValue(bean: playerInstance.user, field: "name")}</td>
+		                        <td valign="top" class="value">${fieldValue(bean: playerInstance.user, field: "name")}</td>
 		                        
 		                    </tr>
 		                
 		                    <tr class="prop">
 		                        <td valign="top" class="name"><g:message code="player.id.label" default="Id" /></td>
 		                        
-		                        <td colspan="2" valign="top" class="value">${fieldValue(bean: playerInstance, field: "id")}</td>
+		                        <td valign="top" class="value">${fieldValue(bean: playerInstance, field: "id")}</td>
 		                        
 		                    </tr>
 		                    
-		                      <tr class="prop">
-		                        <td valign="top" class="name"><g:message code="user.username.label" default="Username" /></td>
-		                        
-		                        <td valign="top" class="value">${fieldValue(bean: playerInstance.user, field: "username")}</td>
-		                        
-		                    </tr>
-		                    
+
 		                    <tr class="prop">
 		                        <td valign="top" class="name"><g:message code="user.email.label" default="Email" /></td>
 		                        
 		                        <td valign="top" class="value">${fieldValue(bean: playerInstance.user, field: "email")}</td>
 		                        
 		                    </tr>
-		                    
-		                      
+
 		                    <tr class="prop">
 		                        <td valign="top" class="name"><g:message code="user.birthday.label" default="Birthday" /></td>
 		                        
@@ -57,7 +52,7 @@
 		                    <tr class="prop">
 		                        <td valign="top" class="name"><g:message code="player.affiliations.label" default="Affiliations" /></td>
 		                        
-		                        <td colspan="2" valign="top" style="text-align: left;" class="value">
+		                        <td valign="top" style="text-align: left;" class="value">
 		                            <ul>
 		                            <g:each in="${playerInstance.affiliations}" var="a">
 		                                <li><g:link controller="affiliation" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
@@ -70,35 +65,44 @@
 		                    
 		                     <tr class="prop">
 		                        <td valign="top" class="name"><g:message code="player.averageRating.label" default="averageRatings" /></td>
-		                        
-		                        <td valign="top" style="text-align: left;" class="value">
-		                            <ul>
-		                            <g:each in="${playerInstance.getRatingsByDiscipline()}" var="r">
-		                                <li>${r.key}                                     </li>
-		                            </g:each>
-		                            </ul>
-		                        </td>
-		                        
-		                        <td valign="top" style="text-align: left;" class="value">
-		                            <ul>
-		                            <g:each in="${playerInstance.getRatingsByDiscipline()}" var="r">
-		                               ${r.value}
-		                            </g:each>
-		                            </ul>
-		                        </td>
+
+                                 <td valign="top" style="text-align: left;" class="value">
+                                     <table>
+                                        <tbody>
+                                            <td valign="top" style="text-align: left;">
+                                                <ul>
+                                                    <g:each in="${playerInstance.getRatingsByDiscipline()}" var="r">
+                                                    <li>${r.key}</li>
+                                                    </g:each>
+                                                </ul>
+                                            </td>
+
+                                            <td valign="top" style="text-align: left;">
+                                                <ul>
+                                                <g:each in="${playerInstance.getRatingsByDiscipline()}" var="r">
+                                                   <li class="playerRating">${r.value}</li>
+                                                </g:each>
+                                                </ul>
+                                            </td>
+                                        </tbody>
+                                    </table>
+                                 </td>
 		                        
 		                    </tr>
-		                
-		                    
-		                
+
+
+
 		                </tbody>
 		            </table>
+                    </div>
+
+                    <div class="playerPhoto">
+				        <g:fbPhoto facebookUID="${playerInstance.user.facebookUid}"/>
+			        </div>
 		        </div> <!-- end dialog -->
         	</div >  <!-- end playerinfo -->
 
-			<div class="playerPhoto">
-				<g:fbPhoto facebookUID="${playerInstance.user.facebookUid}" />
-			</div>
+
 	    </div>
     </body>
 </html>

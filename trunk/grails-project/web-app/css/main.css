@@ -494,10 +494,27 @@ div .facebookCommentStyle{
 	float:left;
 }
 
+.playerInfo .dialog{
+    border-top:2px solid #CCCCCC;
+}
+
+.playerDialog{
+    float:left;
+}
+
+.playerDialog table{
+    border:0px;
+}
+
 .playerPhoto {
 	/*border: 2px solid #ccc;*/
-	float:right;
+	float:left;
 	margin: 75px 15px 15px 15px;
+}
+
+.playerRating {
+    list-style: none outside none;
+    text-align:right;
 }
 
 /* FB Comments */

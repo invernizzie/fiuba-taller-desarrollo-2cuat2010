@@ -23,8 +23,7 @@
                         
                             <th><g:message code="player.user.label" default="User" /></th>
                             
-                            <g:sortableColumn property="username" title="${message(code: 'user.username.label', default: 'Username')}" />
-                            
+
                             <g:sortableColumn property="email" title="${message(code: 'user.email.label', default: 'Email')}" />
                         
                         </tr>
@@ -38,7 +37,6 @@
                         
                             <td>${fieldValue(bean: playerInstance, field: "user")}</td>
                                                         
-                            <td>${fieldValue(bean: playerInstance.user, field: "username")}</td>
 
                             <td>${fieldValue(bean: playerInstance.user, field: "email")}</td>                        
                         </tr>
