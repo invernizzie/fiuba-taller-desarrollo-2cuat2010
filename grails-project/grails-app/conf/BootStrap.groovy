@@ -8,6 +8,10 @@ class BootStrap {
     def userService
     def ratingService
 
+    def users = []
+
+    Random random = new Random(new Date().time)
+
     def init = { servletContext ->
 
         if (GrailsUtil.environment == 'test')
@@ -16,15 +20,22 @@ class BootStrap {
         def football = new Discipline(name: "Futbol 5", playersPerTeam: 5, tieable: true)
         def singlesTennis = new Discipline(name: "Tenis singles", playersPerTeam: 1, tieable: false)
         def doublesTennis = new Discipline(name: "Tenis dobles", playersPerTeam: 2, tieable: false)
-        [football, singlesTennis, doublesTennis].each { it.save(failOnError: true) }
+        def basket = new Discipline(name: 'Basket', playersPerTeam: 5, tieable: true)
+        def volleyball = new Discipline(name: 'Voley', playersPerTeam: 6, tieable: true)
+        def disciplines = [football, singlesTennis, doublesTennis, basket, volleyball]
+        disciplines.each { it.save(failOnError: true) }
 
         def palermo = user('154804461414')
         def burrito = user('30474505823')
         def federer = user('64760994940')
         def nalbandian = user('1727091423')
 
-        def footballField = playingField('Futbol 5 Alto Pasto', 'Argentina', 'Capital Federal', 'Suiza 1840', [football], 'futbol1.jpg')
-        def tennisField = playingField('Club de tenis', 'Argentina', 'Capital Federal', 'Jose Hernandez 2930 entre Martin Fierro y Sgto. Cruz', [singlesTennis, doublesTennis], 'tenis1.jpg')
+        def footballField = playingField('Futbol 5 Alto Pasto', 'Argentina', 'Ing. Pablo Nogues', 'Suiza 1840', [football], 'futbol1.jpg')
+        def tennisField = playingField('Lawn Tennis Club', 'Argentina', 'Capital Federal', 'Olleros 1510', [singlesTennis, doublesTennis], 'tenis1.jpg')
+        // TODO Add pictures
+        def sportsCenter = playingField('Polideportivo Dorrego', 'Argentina', 'Capital Federal', 'Oruro 1300', [volleyball, basket, singlesTennis])
+        def basketField = playingField('Club Italiano', 'Argentina', 'Capital Federal', 'Av. Rivadavia 4731', [basket, volleyball])
+        List<PlayingField> fields = [footballField, tennisField, sportsCenter, basketField]
 
         def bocaJrs = team('Boca Jrs.', football, [palermo])
         def riverPlate = team('River Plate', football, [burrito])
@@ -42,38 +53,15 @@ class BootStrap {
         manianaYUnaHora.add(Calendar.DAY_OF_YEAR, 1)
         manianaYUnaHora.add(Calendar.HOUR, 1)
 
-        new Match(
-                name: "Tenis el sabado",
-                startingTime: yesterday.time,
-                endingTime: yesterdayPlusOneHour.time,
-                publicMatch: true,
-                owner: federer,
-                localTeam: federerSingles,
-                awayTeam: nalbandianSingles,
-                field: tennisField,
-                outcome: Outcome.LOCAL_WON,
-                score: '6-4, 3-6, 6-3',
-                discipline: federerSingles.discipline).save(failOnError: true)
-        new Match(
-                name: "Mano a mano",
-                startingTime: maniana.time,
-                endingTime: manianaYUnaHora.time,
-                publicMatch: true,
-                owner: nalbandian,
-                localTeam: nalbandianSingles,
-                awayTeam: federerSingles,
-                field: tennisField,
-                discipline: nalbandianSingles.discipline).save(failOnError: true)
-        new Match(
-                name: "Fulbacho",
-                startingTime: maniana.time,
-                endingTime: manianaYUnaHora.time,
-                publicMatch: true,
-                owner: palermo,
-                localTeam: bocaJrs,
-                awayTeam: riverPlate,
-                field: tennisField,
-                discipline: bocaJrs.discipline).save(failOnError: true)
+        match(  'Tenis el sabado', nalbandian,
+                nalbandianSingles, federerSingles,
+                tennisField, outcome: Outcome.LOCAL_WON,
+                score: '6-4, 3-6, 6-3', date: yesterday)
+        match(  'Mano a mano - tenis', federer,
+                nalbandianSingles, federerSingles, tennisField)
+        match(  'Picado + asado', palermo,
+                bocaJrs, riverPlate,
+                sportsCenter, date: calendar(5, 3, 2011))
 
         rating(from: palermo, to: federer, discipline: singlesTennis, rating: 10)
         rating(from: palermo, to: nalbandian, discipline: singlesTennis, rating: 9)
@@ -87,23 +75,76 @@ class BootStrap {
         if (!ConfigurationHolder.config.loadFullData)
             return
         
-        JSON.parse(facebookUsersToLoad)[1..10].each {
+        JSON.parse(facebookUsersToLoad).each {
             user(it.id)
         }
 
         // Generacion de Ratings
-        def users = User.findAll()
-        def disciplines = [football, singlesTennis, doublesTennis]
-        def random = new Random(new Date().getTime())
         users.each { user ->
             10.times {
                 rating(
                         from: user,
                         to: users[random.nextInt(users.size())],
-                        discipline: disciplines[random.nextInt(3)],
+                        discipline: disciplines[random.nextInt(disciplines.size())],
                         rating: random.nextInt(10) )
             }
         }
+
+        def italianoBasket = team('Italiano Basket', basket, randomlySelectUsers(5))
+        def espaniolBasket = team('Club Español Basket', basket, randomlySelectUsers(4))
+
+        match(  '3ra fecha Copa De Tinto', italianoBasket.affiliations.iterator().next().player.user,
+                italianoBasket, espaniolBasket, basketField, date: calendar(10, 3, 2011))
+
+        // Generacion automatica de partidos para rellenar
+        10.times {
+            Discipline discipline = disciplines[random.nextInt(disciplines.size())]
+            List<User> localUsers = randomlySelectUsers(discipline.playersPerTeam)
+            List<User> awayUsers = randomlySelectUsers(discipline.playersPerTeam)
+            Team local = team("Autogenerated team ${it*2}", discipline, localUsers)
+            Team away = team("Autogenerated team ${it*2+1}", discipline, awayUsers)
+            PlayingField field = fields.find { field ->
+                field.availableDisciplines.contains(discipline)
+            }
+            def day = random.nextInt(28) + 1
+            def month = random.nextInt(12) + 1
+            def year = random.nextInt(3) + 2010
+            match(  "Autogenerated match $it", localUsers[0],
+                    local, away, field, date: calendar(day, month, year))
+        }
+    }
+
+    Calendar calendar(day, month, year) {
+        def calendar = Calendar.instance
+        calendar.setTime(Date.parse('d-M-y', "${day}-${month}-${year}"))
+        return calendar
+    }
+
+    // Random-length match
+    Match match(Map optionalParams = [:], String name, User owner, Team local, Team away, PlayingField field) {
+        def startingDate = optionalParams.date ?: Calendar.instance
+        def endingDate = startingDate.clone()
+        endingDate.add(Calendar.HOUR_OF_DAY, random.nextInt(4))
+        new Match(
+                name: name,
+                startingTime: startingDate.time,
+                endingTime: endingDate.time,
+                publicMatch: true,
+                owner: owner,
+                localTeam: local,
+                awayTeam: away,
+                field: field,
+                outcome: optionalParams.outcome,
+                score: optionalParams.score,
+                discipline: local.discipline).save(failOnError: true)
+    }
+
+    List<User> randomlySelectUsers(amount) {
+        def selectedUsers = []
+        amount.times {
+            selectedUsers << users[random.nextInt(users.size())]
+        }
+        return selectedUsers
     }
 
     PlayingField playingField(String name, String country, String city, String address, List<Discipline> disciplines, String photoPath = '') {
@@ -125,11 +166,13 @@ class BootStrap {
         users*.player.each { player ->
             team.addToAffiliations(new Affiliation(player: player, team: team))
         }
-        team.save(flush: true)
+        team.save(failOnError: true)
     }
 
     User user(String facebookUid) {
-        userService.findOrCreateByFbUidWithoutSession(facebookUid)
+        def user = userService.findOrCreateByFbUidWithoutSession(facebookUid)
+        users << user
+        return user
     }
 
     def facebookUsersToLoad =

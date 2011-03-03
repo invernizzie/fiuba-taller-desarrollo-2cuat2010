@@ -19,7 +19,7 @@
         <g:each in="${incomingMatches}" var="match">
             <li>
                 <g:link controller="match" action="show" params="[id: match.id]">${match.name}</g:link>
-                <i>${match.startingTime}</i>
+                <br /><i><g:formatDate date="${match.startingTime}" /></i>
             </li>
         </g:each>
     </ul>
