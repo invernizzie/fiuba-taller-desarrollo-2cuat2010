@@ -42,12 +42,14 @@
                             </td>
                         </tr>
 
+                        <g:set var="yearNum" value="${new Date().format('yyyy').toInteger()}"></g:set>
+                        <g:set var="years" value="${yearNum..(yearNum + 10)}"/>
                         <tr class="prop">
                             <td valign="top" class="name">
                                 <label for="startingTime"><g:message code="match.startingTime.label" default="Starting Time" /></label>
                             </td>
                             <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'startingTime', 'errors')}">
-                                <g:datePicker name="startingTime" precision="minute" value="${matchInstance?.startingTime}"  />
+                                <g:datePicker name="startingTime" precision="minute" value="${matchInstance?.startingTime}" years="${years}" />
                             </td>
                         </tr>
 
@@ -56,7 +58,7 @@
                                 <label for="endingTime"><g:message code="match.endingTime.label" default="Ending Time" /></label>
                             </td>
                             <td valign="top" class="value ${hasErrors(bean: matchInstance, field: 'endingTime', 'errors')}">
-                                <g:datePicker name="endingTime" precision="minute" value="${matchInstance?.endingTime}"  />
+                                <g:datePicker name="endingTime" precision="minute" value="${matchInstance?.endingTime}" years="${years}"/>
                             </td>
                         </tr>
 
