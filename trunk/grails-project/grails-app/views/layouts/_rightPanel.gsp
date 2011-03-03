@@ -4,6 +4,7 @@
     <li><g:link controller="playingField" action="list"><g:message code="playingField.list.label"/></g:link></li>
     <li><g:link controller="player" action="list"><g:message code="player.list.label"/></g:link></li>
     <li><g:link controller="match" action="create"><g:message code="match.organize.label"/></g:link></li>
+    <li><g:link controller="ranking" action="show" params="['discipline.id': 1]"><g:message code="rankings.football.label" /></g:link></li>
 </ul>
 
 
