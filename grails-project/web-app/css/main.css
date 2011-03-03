@@ -191,7 +191,6 @@ td.errors textarea {
 /* TABLES */
 
 table {
-    border: 1px solid #ccc;
     width: 100%
 }
 tr {
@@ -276,6 +275,7 @@ th.desc a {
 
 .dialog table {
     padding: 5px 0;
+    border-top:2px solid #CCCCCC;
 }
 
 .prop {
@@ -376,14 +376,14 @@ div .teamList {
     margin: 10px 0;
     padding: 0 10px 10px 10px;
     border: 1px solid #ccc;
-    min-width: 237px;
+    min-width: 252px;
     text-align: center;
     vertical-align: top;
     min-height: 102px;
 }
 
 div .facebookCommentStyle{
-    border: 1px solid #ccc;
+    text-align:center;
 }
 
 .teamList .teamName {
