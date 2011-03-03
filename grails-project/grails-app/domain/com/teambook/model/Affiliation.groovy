@@ -1,6 +1,6 @@
 package com.teambook.model
 
-class Affiliation {
+class Affiliation implements Comparable {
 
 	Date dateCreated
 
@@ -18,6 +18,13 @@ class Affiliation {
 		dateCreated()
 		gamesPlayed(min: 0)
     }
-    
-   
+
+
+    int compareTo(Object t) {
+        if (!(t instanceof Affiliation))
+            return 0
+        Affiliation that = (Affiliation) t
+        return this.player.getRatingForDiscipline(team.discipline) >=
+                that.player.getRatingForDiscipline(team.discipline) ? 1 : -1
+    }
 }
