@@ -22,7 +22,7 @@ class UserService {
             user = new User( [
                     facebookUid: facebookUid,
                     username: 'username', // No tiene importancia, se loggea con fb
-                    name: fbProfile.name,
+                    name: fbProfile.name[0..<Math.min(30, fbProfile.name.length())],
                     birthday: fbProfile.birthday,
                     email: fbProfile.email ?: 'none@none.com',
                     player: new Player()
@@ -39,7 +39,7 @@ class UserService {
             user = new User( [
                     facebookUid: facebookUid,
                     username: 'username', // No tiene importancia, se loggea con fb
-                    name: fbProfile.name,
+                    name: fbProfile.name[0..<Math.min(30, fbProfile.name.length())],
                     birthday: fbProfile.birthday,
                     email: fbProfile.email ?: 'none@none.com',
                     player: new Player()

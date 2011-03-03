@@ -10,7 +10,7 @@
     <body>
         <div class="body">
         	<div class="playerInfo">
-		        <h1><g:message code="default.show.label" args="[entityName]" /></h1>
+		        <h1>${playerInstance.user.name}</h1>
 		        <g:if test="${flash.message}">
 		        <div class="message">${flash.message}</div>
 		        </g:if>
@@ -19,13 +19,6 @@
                     <div class="playerDialog">
 		            <table>
 		                <tbody>
-		                	<tr class="prop">
-		                        <td valign="top" class="name"><g:message code="player.user.label" default="User" /></td>
-		                        
-		                        <td valign="top" class="value">${fieldValue(bean: playerInstance.user, field: "name")}</td>
-		                        
-		                    </tr>
-		                
 		                    <tr class="prop">
 		                        <td valign="top" class="name"><g:message code="player.id.label" default="Id" /></td>
 		                        
@@ -55,7 +48,7 @@
 		                        <td valign="top" style="text-align: left;" class="value">
 		                            <ul>
 		                            <g:each in="${playerInstance.affiliations}" var="a">
-		                                <li><g:link controller="affiliation" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
+		                                <li>${a.team.name?.encodeAsHTML()}</li>
 		                            </g:each>
 		                            </ul>
 		                        </td>
