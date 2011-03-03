@@ -14,7 +14,7 @@
 
 
 <div class="box">
-    <h2 style="margin-top:17px">Incoming matches</h2>
+    <h2 style="margin-top:17px"><g:message code="match.incoming.label"/></h2>
     <ul>
         <g:each in="${incomingMatches}" var="match">
             <li>
