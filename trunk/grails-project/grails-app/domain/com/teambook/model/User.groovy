@@ -19,8 +19,8 @@ class User {
 
     static constraints = {
         facebookUid(blank: false, unique: true)
-        username(blank: false, maxSize: 30)
-        name(blank: false)
+        username(blank: false)
+        name(blank: false, maxSize: 30)
         //birthday(min: Calendar.getInstance().add(Calendar.YEAR, -MINIMUM_AGE))
         /* No siempre lo aporta facebook, podria conseguirse
            si el usuario lo permite pero es al pedo */
